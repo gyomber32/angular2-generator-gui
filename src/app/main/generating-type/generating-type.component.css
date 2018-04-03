@@ -1,0 +1,38 @@
+.example-radio-group {
+    display: inline-flex;
+    flex-direction: column;
+    color: white;
+}
+
+.example-radio-button {
+    margin: 5px;
+}
+
+.choose-label{
+    font-size: 150%;
+    color: white;
+}
+
+.endpoint-label{
+    font-size: 100%;
+    display: inline;
+    position: absolute;
+    color: white;
+    top: 9em;
+    left: 15em;
+}
+
+.endpoint-input{
+    display: inline;
+    position: absolute;
+    background-color: white;
+    top: 9rem;
+    left: 20rem;
+}
+
+.endpoint-button{
+    display: inline;
+    position: absolute;
+    top: 8.5rem;
+    left: 32rem;
+}

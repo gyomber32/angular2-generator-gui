@@ -1,3 +1,12 @@
-<p>
-  upload-type works!
-</p>
+<label class="upload-label">Feltöltések:</label>
+<mat-radio-group class="example-radio-group" [(ngModel)]="selectedType" (change)="show()">
+  <mat-radio-button class="example-radio-button" *ngFor="let upload of uploads" [value]="upload">
+    {{upload}}
+  </mat-radio-button>
+</mat-radio-group>
+
+<label class="download-label" *ngIf="visibility">Mentés helye:</label>
+<input class="download-input" *ngIf="visibility" matInput value="">
+<button class="download-button" *ngIf="visibility" mat-raised-button color="primary">Tallózás</button>
+
+<div class="example-selected-value">Your value is: {{selectedType}}</div>

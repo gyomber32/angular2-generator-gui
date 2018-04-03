@@ -1,0 +1,45 @@
+.upload-label{
+    font-size: 150%;
+    color: white;
+    display: inline;
+    position: absolute;
+    top: 10em;
+    left: 0.5em;
+}
+
+.example-radio-group {
+    display: inline-flex;
+    flex-direction: column;
+    position: absolute;
+    color: white;
+    top: 15em;
+    left: 8em;
+}
+
+.example-radio-button {
+    margin: 5px;
+}
+
+.download-label{
+    font-size: 100%;
+    display: inline;
+    position: absolute;
+    color: white;
+    top: 20em;
+    left: 15em;
+}
+
+.download-input{
+    display: inline;
+    position: absolute;
+    background-color: white;
+    top: 20rem;
+    left: 21rem;
+}
+
+.download-button{
+    display: inline;
+    position: absolute;
+    top: 19.5rem;
+    left: 33rem;
+}

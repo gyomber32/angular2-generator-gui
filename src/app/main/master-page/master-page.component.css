@@ -1,0 +1,12 @@
+.title{
+    display: block;
+    text-align: center;
+    color: white;
+}
+
+.start-button{
+    display: inline;
+    position: absolute;
+    bottom: 13rem;
+    right: 22rem;
+}
