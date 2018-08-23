@@ -1,10 +1,10 @@
-.example-radio-group {
+.radio-group {
     display: inline-flex;
     flex-direction: column;
     color: white;
 }
 
-.example-radio-button {
+.radio-button {
     margin: 5px;
 }
 

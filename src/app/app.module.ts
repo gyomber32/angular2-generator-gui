@@ -2,12 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
+
 import { GeneratingTypeComponent } from './main/generating-type/generating-type.component';
 import { UploadTypeComponent } from './main/upload-type/upload-type.component';
 import { MasterPageComponent } from './main/master-page/master-page.component';
 import { UploadTableComponent } from './main/upload-table/upload-table.component';
+import { WizardComponent } from './main/wizard/wizard.component';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -24,13 +26,15 @@ import { Routes, RouterModule } from '@angular/router';
     MasterPageComponent,
     GeneratingTypeComponent,
     UploadTypeComponent,
-    UploadTableComponent
+    UploadTableComponent,
+    WizardComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     NoopAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     routing,
     AppMaterialModule,
     BrowserModule,

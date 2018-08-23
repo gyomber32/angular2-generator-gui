@@ -1,0 +1,143 @@
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Nem</ng-template>
+      <mat-checkbox>Szükséges</mat-checkbox>
+      <br>
+      <br>
+      <mat-radio-group formControlName="firstCtrl" required>
+        <mat-radio-button value="Male">Férfi</mat-radio-button>
+        <mat-radio-button value="Female">Nő</mat-radio-button>
+      </mat-radio-group>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Születési dátum</ng-template>
+      <mat-checkbox>Szükséges</mat-checkbox>
+      <br>
+      <br>
+      <mat-form-field>
+        <input matInput [matDatepicker]="startPicker" placeholder="Choose a date" formControlName="secondCtrl" required>
+        <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+        <mat-datepicker #startPicker startView="year" [startAt]="startDate"></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [matDatepicker]="endPicker" placeholder="Choose a date" formControlName="secondCtrl" required>
+        <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+        <mat-datepicker #endPicker startView="year" [startAt]="endDate"></mat-datepicker>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="thirdFormGroup">
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel>Kor</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Address" formControlName="thirdCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="fourthFormGroup">
+    <form [formGroup]="fourthFormGroup">
+      <ng-template matStepLabel>Testsúly</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Address" formControlName="fourthCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="fifthFormGroup">
+    <form [formGroup]="fifthFormGroup">
+      <ng-template matStepLabel>Testmagasság</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Address" formControlName="fifthCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="sixthFormGroup">
+    <form [formGroup]="sixthFormGroup">
+      <ng-template matStepLabel>Vérnyomás</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Address" formControlName="sixthCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="seventhFormGroup">
+    <form [formGroup]="seventhFormGroup">
+      <ng-template matStepLabel>Vércukor</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Address" formControlName="seventhCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="eighthFormGroup">
+    <form [formGroup]="eighthFormGroup">
+      <ng-template matStepLabel>Véroxigén szint</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Address" formControlName="eighthCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="ninthFormGroup">
+    <form [formGroup]="ninthFormGroup">
+      <ng-template matStepLabel>Dohányzás</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Address" formControlName="ninthCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="tenthFormGroup">
+    <form [formGroup]="tenthFormGroup">
+      <ng-template matStepLabel>Tüdőhang</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Address" formControlName="tenthCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    You are now done.
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

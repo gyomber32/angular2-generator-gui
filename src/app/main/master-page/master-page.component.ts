@@ -13,9 +13,16 @@ export class MasterPageComponent implements OnInit {
   constructor(private uploadType: UploadTypeComponent, private router: Router) { }
 
   navigate(){
-    if( this.uploadType.getSelectedType() == 'Nyomonkövetés' ){
+
+    /* This is working and it's necessary, but not here, but also after wizard selected the appropriate SQL queries */
+
+    /* if( this.uploadType.getSelectedType() == 'Nyomonkövetés' ){
       this.router.navigate(['/upload-table']);
-    }
+    } */
+
+    
+    this.router.navigate(['/wizard']);
+
   }
 
   ngOnInit() {

@@ -1,7 +1,7 @@
 <label class="choose-label">Kérjük válasszon:</label>
 
-<mat-radio-group class="example-radio-group" [(ngModel)]="selectedType" (change)="show()">
-  <mat-radio-button class="example-radio-button" *ngFor="let type of types" [value]="type">
+<mat-radio-group class="radio-group" [(ngModel)]="selectedType" (change)="show()">
+  <mat-radio-button class="radio-button" *ngFor="let type of types" [value]="type">
     <option>{{type}}</option>
   </mat-radio-button>
 </mat-radio-group>
