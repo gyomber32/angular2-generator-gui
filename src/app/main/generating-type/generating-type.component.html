@@ -6,7 +6,8 @@
   </mat-radio-button>
 </mat-radio-group>
 
-<label class="endpoint-label" *ngIf="visibility">Végpontok:</label>
-<input class="endpoint-input" *ngIf="visibility" matInput value="">
-<button class="endpoint-button" *ngIf="visibility" mat-raised-button color="primary">URL hozzáadás</button>
-
+<div class="container" *ngIf="visibility">
+  <label class="endpoint-label">Végpontok:</label>
+  <input class="endpoint-input" matInput value="">
+  <button class="endpoint-button" mat-raised-button color="primary">URL hozzáadás</button>
+</div>
