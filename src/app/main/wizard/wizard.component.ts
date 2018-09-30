@@ -20,11 +20,50 @@ export class WizardComponent implements OnInit {
   ninthFormGroup: FormGroup;
   tenthFormGroup: FormGroup;
 
+  firstChecked = false;
+
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    console.log("onInit called");
     this.firstFormGroup = this.formBuilder.group({
-      firstCtrl: ['', Validators.required]
+      firstCtrl: [{ value: '', disabled: !(this.firstChecked) }, Validators.required]
+    });
+    this.secondFormGroup = this.formBuilder.group({
+      secondCtrl: ['', Validators.required]
+    });
+    this.thirdFormGroup = this.formBuilder.group({
+      thirdCtrl: ['', Validators.required]
+    });
+    this.fourthFormGroup = this.formBuilder.group({
+      fourthCtrl: ['', Validators.required]
+    });
+    this.fifthFormGroup = this.formBuilder.group({
+      fifthCtrl: ['', Validators.required]
+    });
+    this.sixthFormGroup = this.formBuilder.group({
+      sixthCtrl: ['', Validators.required]
+    });
+    this.seventhFormGroup = this.formBuilder.group({
+      seventhCtrl: ['', Validators.required]
+    });
+    this.eighthFormGroup = this.formBuilder.group({
+      eighthCtrl: ['', Validators.required]
+    });
+    this.ninthFormGroup = this.formBuilder.group({
+      ninthCtrl: ['', Validators.required]
+    });
+    this.tenthFormGroup = this.formBuilder.group({
+      tenthCtrl: ['', Validators.required]
+    });
+  }
+  
+  // ngOnInit(){}
+
+  ngOnChanges() {
+    console.log("onDoCheck called");
+    this.firstFormGroup = this.formBuilder.group({
+      firstCtrl: [{ value: '', disabled: !(this.firstChecked) }, Validators.required]
     });
     this.secondFormGroup = this.formBuilder.group({
       secondCtrl: ['', Validators.required]
@@ -58,5 +97,5 @@ export class WizardComponent implements OnInit {
 
 export class Datepicker {
   startDate = new Date(1990, 0, 1);
-  endDate = new Date (2018, 12, 31);
+  endDate = new Date(2018, 12, 31);
 }

@@ -2,10 +2,10 @@
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel>Nem</ng-template>
-      <mat-checkbox>Szükséges</mat-checkbox>
+      <mat-checkbox value="true" [(ngModel)]="firstChecked" (change)="ngOnChanges()" [ngModelOptions]="{standalone: true}">Szükséges</mat-checkbox>
       <br>
       <br>
-      <mat-radio-group formControlName="firstCtrl" required>
+      <mat-radio-group [disabled]="!firstChecked" formControlName="firstCtrl">
         <mat-radio-button value="Male">Férfi</mat-radio-button>
         <mat-radio-button value="Female">Nő</mat-radio-button>
       </mat-radio-group>
@@ -35,8 +35,8 @@
       <br>
       <br>
       <div>
-          <button mat-button matStepperPrevious>Előző</button>
-          <button mat-button matStepperNext>Következő</button>
+        <button mat-button matStepperPrevious>Előző</button>
+        <button mat-button matStepperNext>Következő</button>
       </div>
     </form>
   </mat-step>
@@ -52,8 +52,8 @@
       <br>
       <br>
       <div>
-          <button mat-button matStepperPrevious>Előző</button>
-          <button mat-button matStepperNext>Következő</button>
+        <button mat-button matStepperPrevious>Előző</button>
+        <button mat-button matStepperNext>Következő</button>
       </div>
     </form>
   </mat-step>
@@ -69,8 +69,8 @@
       <br>
       <br>
       <div>
-          <button mat-button matStepperPrevious>Előző</button>
-          <button mat-button matStepperNext>Következő</button>
+        <button mat-button matStepperPrevious>Előző</button>
+        <button mat-button matStepperNext>Következő</button>
       </div>
     </form>
   </mat-step>
@@ -86,8 +86,8 @@
       <br>
       <br>
       <div>
-          <button mat-button matStepperPrevious>Előző</button>
-          <button mat-button matStepperNext>Következő</button>
+        <button mat-button matStepperPrevious>Előző</button>
+        <button mat-button matStepperNext>Következő</button>
       </div>
     </form>
   </mat-step>
@@ -106,8 +106,8 @@
         <input matInput formControlName="sixthCtrl" required>
       </mat-form-field>
       <div>
-          <button mat-button matStepperPrevious>Előző</button>
-          <button mat-button matStepperNext>Következő</button>
+        <button mat-button matStepperPrevious>Előző</button>
+        <button mat-button matStepperNext>Következő</button>
       </div>
     </form>
   </mat-step>
@@ -123,8 +123,8 @@
       <br>
       <br>
       <div>
-          <button mat-button matStepperPrevious>Előző</button>
-          <button mat-button matStepperNext>Következő</button>
+        <button mat-button matStepperPrevious>Előző</button>
+        <button mat-button matStepperNext>Következő</button>
       </div>
     </form>
   </mat-step>
@@ -140,8 +140,8 @@
       <br>
       <br>
       <div>
-          <button mat-button matStepperPrevious>Előző</button>
-          <button mat-button matStepperNext>Következő</button>
+        <button mat-button matStepperPrevious>Előző</button>
+        <button mat-button matStepperNext>Következő</button>
       </div>
     </form>
   </mat-step>
@@ -159,8 +159,8 @@
       <br>
       <br>
       <div>
-          <button mat-button matStepperPrevious>Előző</button>
-          <button mat-button matStepperNext>Következő</button>
+        <button mat-button matStepperPrevious>Előző</button>
+        <button mat-button matStepperNext>Következő</button>
       </div>
     </form>
   </mat-step>
