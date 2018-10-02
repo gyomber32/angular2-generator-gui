@@ -1,4 +1,5 @@
-import { Injectable, Optional } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { SystolicBloodPressureApi } from '../shared/sdk/services/custom/SystolicBloodPressure';
 
@@ -7,7 +8,7 @@ export class SystolicBloodPressureService {
 
   constructor(private systolicBloodPressureApi: SystolicBloodPressureApi) { }
 
-  public getSystolicBloodPressure(@Optional() systolicBloodPressure: number) {
+  public getSystolicBloodPressure(systolicBloodPressure?: number): Observable<any> {
     if (systolicBloodPressure == null) {
       return this.systolicBloodPressureApi.getSystolicBloodPressure();
     }

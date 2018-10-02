@@ -1,4 +1,5 @@
-import { Injectable, Optional } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { WeightApi } from '../shared/sdk/services/custom/Weight';
 
@@ -7,7 +8,7 @@ export class WeightService {
 
   constructor(private weightApi: WeightApi) { }
 
-  public getWeight(@Optional() weight: number) {
+  public getWeight(weight?: number): Observable<any> {
     if (weight == null) {
       return this.weightApi.getWeight();
     }

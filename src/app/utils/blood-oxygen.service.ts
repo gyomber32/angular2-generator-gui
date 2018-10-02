@@ -1,4 +1,5 @@
-import { Injectable, Optional } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { BloodOxygenApi } from '../shared/sdk/services/custom/BloodOxygen';
 
@@ -7,12 +8,12 @@ export class BloodOxygenService {
 
   constructor(private bloodOxygenApi: BloodOxygenApi) { }
 
-  public getBloodOxygen(@Optional() bloodOxygen: number) {
+  public getBloodOxygen(bloodOxygen?: number): Observable<any> {
     if (bloodOxygen == null) {
-      this.bloodOxygenApi.getBloodOxygen();
+      return this.bloodOxygenApi.getBloodOxygen();
     }
     if (bloodOxygen != null) {
-      this.bloodOxygenApi.getBloodOxygen(bloodOxygen);
+      return this.bloodOxygenApi.getBloodOxygen(bloodOxygen);
     }
   }
 

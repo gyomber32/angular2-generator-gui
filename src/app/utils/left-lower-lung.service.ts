@@ -1,4 +1,5 @@
-import { Injectable, Optional } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { LeftLowerLungApi } from '../shared/sdk/services/custom/LeftLowerLung';
 
@@ -7,7 +8,7 @@ export class LeftLowerLungService {
 
   constructor(private leftLowerLungApi: LeftLowerLungApi) { }
 
-  public getLeftLowerLung(@Optional() lll: string) {
+  public getLeftLowerLung(lll?: string): Observable<any> {
     if (lll == undefined) {
       return this.leftLowerLungApi.getLll();
     }

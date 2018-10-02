@@ -1,4 +1,5 @@
-import { Injectable, Optional } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs'
 
 import { HeightApi } from '../shared/sdk/services/custom/Height';
 
@@ -7,7 +8,7 @@ export class HeightService {
 
   constructor(private heightApi: HeightApi) { }
 
-  public getHeight(@Optional() height: number) {
+  public getHeight(height?: number): Observable<any> {
     if (height == null) {
       return this.heightApi.getHeight();
     }

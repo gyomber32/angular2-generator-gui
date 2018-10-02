@@ -1,4 +1,5 @@
-import { Injectable, Optional } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { AgeApi } from '../shared/sdk/services/custom/Age';
 
@@ -7,7 +8,7 @@ export class AgeService {
 
   constructor(private ageApi: AgeApi) { }
 
-  public getAge(@Optional() age: number) {
+  public getAge(age?: number): Observable <any> {
     if (age == null) {
       return this.ageApi.getAge();
     }

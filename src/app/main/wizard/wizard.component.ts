@@ -1,10 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+/* Services */
+import { GenderService } from '../../utils/gender.service';
+import { AgeService } from '../../utils/age.service';
+import { HeightService } from '../../utils/height.service';
+import { WeightService } from '../../utils/weight.service';
+import { SystolicBloodPressureService } from '../../utils/systolic-blood-pressure.service';
+import { DiastolicBloodPressureService } from '../../utils/diastolic-blood-pressure.service';
+import { BloodGlucoseService } from '../../utils/blood-glucose.service';
+import { BloodOxygenService } from '../../utils/blood-oxygen.service';
+import { TobaccoUseService } from '../../utils/tobacco-use.service';
+import { LeftLowerLungService } from '../../utils/left-lower-lung.service';
+import { LeftUpperLungService } from '../../utils/left-upper-lung.service';
+import { RightLowerLungService } from '../../utils/right-lower-lung.service';
+import { RightUpperLungService } from '../../utils/right-upper-lung.service';
+
 @Component({
     selector: 'app-wizard',
     templateUrl: './wizard.component.html',
-    styleUrls: ['./wizard.component.css']
+    styleUrls: ['./wizard.component.css'],
+    providers: [GenderService]
 })
 export class WizardComponent implements OnInit {
 
@@ -40,7 +56,7 @@ export class WizardComponent implements OnInit {
     private tobaccoUse: string;
     private lungSound: string;
 
-    constructor(private formBuilder: FormBuilder) { }
+    constructor(private formBuilder: FormBuilder, private genderService: GenderService, private ageService: AgeService, private heightService: HeightService, private weightService: WeightService, private systolicBloodPressureService: SystolicBloodPressureService, private diastolicBloodPressureService: DiastolicBloodPressureService, private bloodGlucoseService: BloodGlucoseService, private bloodOxygenService: BloodOxygenService, private tobaccoUseService: TobaccoUseService, private leftLowerLungService: LeftLowerLungService, private leftUpperLungService: LeftUpperLungService, private rightLowerLungService: RightLowerLungService, private rightUpperLungService: RightUpperLungService) { }
 
     ngOnInit() {
         console.log("onInit called");
@@ -116,38 +132,121 @@ export class WizardComponent implements OnInit {
             ninthCtrl: [{ value: this.lungSound, disabled: !(this.ninthChecked) }, Validators.required]
         });
 
-        if(this.firstChecked == false){
-            this.gender = '';
+        if (this.firstChecked == false) {
+            this.gender = undefined;
         }
-        if(this.secondChecked == false){
-            this.age = null; 
+        if (this.secondChecked == false) {
+            this.age = undefined;
         }
-        if(this.thirdChecked == false){
-            this.height = null;
+        if (this.thirdChecked == false) {
+            this.height = undefined;
         }
-        if(this.fourthChecked == false){
-            this.weight = null;
+        if (this.fourthChecked == false) {
+            this.weight = undefined;
         }
-        if(this.fifthChecked == false){
-            this.systolicBloodPressure = null;
-            this.diastolicBloodPressure = null;
+        if (this.fifthChecked == false) {
+            this.systolicBloodPressure = undefined;
+            this.diastolicBloodPressure = undefined;
         }
-        if(this.sixthChecked == false){
-            this.bloodGlucose = null;
+        if (this.sixthChecked == false) {
+            this.bloodGlucose = undefined;
         }
-        if(this.seventhChecked == false){
-            this.bloodOxygen = null;
+        if (this.seventhChecked == false) {
+            this.bloodOxygen = undefined;
         }
-        if(this.eighthChecked == false){
-            this.tobaccoUse = '';
+        if (this.eighthChecked == false) {
+            this.tobaccoUse = undefined;
         }
-        if(this.ninthChecked == false){
-            this.lungSound = '';
+        if (this.ninthChecked == false) {
+            this.lungSound = undefined;
         }
     }
 
-    public generate(){
-        
+    public generate() {
+        console.log("A generálás elindult!");
+        if (this.gender != undefined) {
+            this.genderService.getGender(this.gender).subscribe((data) => {
+                console.log("The gender is: ", data);
+            }, (error) => {
+                console.log(error);
+            });
+        }
+        if (this.age != undefined) {
+            this.ageService.getAge(this.age).subscribe((data) => {
+                console.log("The age is: ", data);
+            }, (error) => {
+                console.log(error);
+            });
+        }
+        if (this.height != undefined) {
+            this.heightService.getHeight(this.height).subscribe((data) => {
+                console.log("The height is: ", data);
+            }, (error) => {
+                console.log(error);
+            });
+        }
+        if (this.weight != undefined) {
+            this.weightService.getWeight(this.weight).subscribe((data) => {
+                console.log("The weight is: ", data);
+            }, (error) => {
+                console.log(error);
+            });
+        }
+        if (this.systolicBloodPressure != undefined && this.diastolicBloodPressure != undefined) {
+            this.systolicBloodPressureService.getSystolicBloodPressure(this.systolicBloodPressure).subscribe((data) => {
+                console.log("The systolic is: ", data);
+            }, (error) => {
+                console.log(error);
+            });
+            this.diastolicBloodPressureService.getDiastolicBloodPressure(this.diastolicBloodPressure).subscribe((data) => {
+                console.log("The diastolic is:", data);
+            }, (error) => {
+                console.log(error);
+            });
+        }
+        if (this.bloodGlucose != undefined) {
+            this.bloodGlucoseService.getBloodGlucose(this.bloodGlucose).subscribe((data) => {
+                console.log("The bloodglucose is: ", data);
+            }, (error) => {
+                console.log(error);
+            });
+        }
+        if (this.bloodOxygen != undefined) {
+            this.bloodOxygenService.getBloodOxygen(this.bloodOxygen).subscribe((data) => {
+                console.log("The bloodOxygen is: ", data);
+            }, (error) => {
+                console.log(error);
+            });
+        }
+        if (this.tobaccoUse != undefined) {
+            this.tobaccoUseService.getTobaccoUse(this.tobaccoUse).subscribe((data) => {
+                console.log("The tobaccoUse is: ", data);
+            }, (error) => {
+                console.log(error);
+            });
+        }
+        if (this.lungSound != undefined) {
+            this.leftLowerLungService.getLeftLowerLung(this.lungSound).subscribe((data) => {
+                console.log("The leftLowerLungSound is: ", data);
+            }, (error) => {
+                console.log(error);
+            });
+            this.leftUpperLungService.getLeftUpperLung(this.lungSound).subscribe((data) => {
+                console.log("The leftUpperLungSound is: ", data);
+            }, (error) => {
+                console.log(error);
+            });
+            this.rightLowerLungService.getRightLowerLung(this.lungSound).subscribe((data) => {
+                console.log("The rigthLowerLungSound is: ", data);
+            }, (error) => {
+                console.log(error);
+            });
+            this.rightUpperLungService.getRightUpperLung(this.lungSound).subscribe((data) => {
+                console.log("The rigthUpperLungSound is: ", data);
+            }, (error) => {
+                console.log(error);
+            });
+        }
     }
 }
 

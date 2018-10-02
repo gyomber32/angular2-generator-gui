@@ -1,4 +1,5 @@
-import { Injectable, Optional } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { GenderApi } from '../shared/sdk/services/custom/Gender';
 
@@ -7,11 +8,11 @@ export class GenderService {
 
   constructor(private genderApi: GenderApi) { }
 
-  public getGender(@Optional() gender: string){
-    if(gender == null){
+  getGender(gender?: string): Observable<any> {
+    if (gender == null) {
       return this.genderApi.getGender();
     }
-    if(gender != null){
+    if (gender != null) {
       return this.genderApi.getGender(gender);
     }
   }

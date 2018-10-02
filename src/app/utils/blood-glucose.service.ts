@@ -1,4 +1,5 @@
-import { Injectable, Optional } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { BloodGlucoseApi } from '../shared/sdk/services/custom/BloodGlucose';
 
@@ -7,7 +8,7 @@ export class BloodGlucoseService {
 
   constructor(private bloodGlucoseApi: BloodGlucoseApi) { }
 
-  public getAge(@Optional() bloodGlucose: number) {
+  public getBloodGlucose(bloodGlucose?: number): Observable<any> {
     if (bloodGlucose == null) {
       return this.bloodGlucoseApi.getBloodGlucose();
     }
