@@ -162,6 +162,31 @@ export class WizardComponent implements OnInit {
         }
     }
 
+    public reset() {
+        this.firstChecked = false;
+        this.secondChecked = false;
+        this.thirdChecked = false;
+        this.fourthChecked = false;
+        this.fifthChecked = false;
+        this.sixthChecked = false;
+        this.seventhChecked = false;
+        this.eighthChecked = false;
+        this.ninthChecked = false;
+
+        this.gender = undefined;
+        this.age = undefined;
+        this.height = undefined;
+        this.weight = undefined;
+        this.systolicBloodPressure = undefined;
+        this.diastolicBloodPressure = undefined;
+        this.bloodGlucose = undefined;
+        this.bloodOxygen = undefined;
+        this.tobaccoUse = undefined;
+        this.lungSound = undefined;
+
+        console.log("Variables reseted");
+    }
+
     public generate() {
         console.log("A generálás elindult!");
         if (this.gender != undefined) {
@@ -195,11 +220,11 @@ export class WizardComponent implements OnInit {
         if (this.systolicBloodPressure != undefined && this.diastolicBloodPressure != undefined) {
             this.systolicBloodPressureService.getSystolicBloodPressure(this.systolicBloodPressure).subscribe((data) => {
                 console.log("The systolic is: ", data);
-            }, (error) => {
-                console.log(error);
-            });
-            this.diastolicBloodPressureService.getDiastolicBloodPressure(this.diastolicBloodPressure).subscribe((data) => {
-                console.log("The diastolic is:", data);
+                this.diastolicBloodPressureService.getDiastolicBloodPressure(this.diastolicBloodPressure).subscribe((data) => {
+                    console.log("The diastolic is:", data);
+                }, (error) => {
+                    console.log(error);
+                });
             }, (error) => {
                 console.log(error);
             });
@@ -227,22 +252,22 @@ export class WizardComponent implements OnInit {
         }
         if (this.lungSound != undefined) {
             this.leftLowerLungService.getLeftLowerLung(this.lungSound).subscribe((data) => {
-                console.log("The leftLowerLungSound is: ", data);
-            }, (error) => {
-                console.log(error);
-            });
-            this.leftUpperLungService.getLeftUpperLung(this.lungSound).subscribe((data) => {
-                console.log("The leftUpperLungSound is: ", data);
-            }, (error) => {
-                console.log(error);
-            });
-            this.rightLowerLungService.getRightLowerLung(this.lungSound).subscribe((data) => {
-                console.log("The rigthLowerLungSound is: ", data);
-            }, (error) => {
-                console.log(error);
-            });
-            this.rightUpperLungService.getRightUpperLung(this.lungSound).subscribe((data) => {
-                console.log("The rigthUpperLungSound is: ", data);
+                console.log("1. The leftLowerLungSound is: ", data);
+                this.leftUpperLungService.getLeftUpperLung(this.lungSound).subscribe((data) => {
+                    console.log("2. The leftUpperLungSound is: ", data);
+                    this.rightLowerLungService.getRightLowerLung(this.lungSound).subscribe((data) => {
+                        console.log("3. The rigthLowerLungSound is: ", data);
+                        this.rightUpperLungService.getRightUpperLung(this.lungSound).subscribe((data) => {
+                            console.log("4. The rigthUpperLungSound is: ", data);
+                        }, (error) => {
+                            console.log(error);
+                        });
+                    }, (error) => {
+                        console.log(error);
+                    });
+                }, (error) => {
+                    console.log(error);
+                });
             }, (error) => {
                 console.log(error);
             });

@@ -13,7 +13,7 @@ export class RightUpperLungService {
       return this.rightUpperLungApi.getRul();
     }
     if (rul != undefined) {
-      return this.rightUpperLungApi.getRul();
+      return this.rightUpperLungApi.getRul(rul);
     }
   }
 

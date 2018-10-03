@@ -13,7 +13,7 @@ export class BloodGlucoseService {
       return this.bloodGlucoseApi.getBloodGlucose();
     }
     if (bloodGlucose != null) {
-      return this.bloodGlucoseApi.getBloodGlucose(bloodGlucose);
+      return this.bloodGlucoseApi.getBloodGlucose((bloodGlucose * 18));
     }
   }
 
