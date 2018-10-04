@@ -1,4 +1,21 @@
 <mat-horizontal-stepper [linear]="isLinear" #stepper>
+  <!-- <mat-step [stepControl]="zeroFormGroup">
+    <form [formGroup]="zeroFormGroup">
+      <ng-template matStepLabel>Mennyiség</ng-template>
+      <br>
+      <br>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Mennyiség" type="number" [(ngModel)]="quantity" formControlName="zeroCtrl">
+      </mat-form-field>
+      <br>
+      <br>
+      <div>
+        <button mat-button matStepperNext (click)="onChange()">Következő</button>
+      </div>
+      <br>
+      <br>
+    </form>
+  </mat-step> -->
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel>Nem</ng-template>
@@ -12,6 +29,7 @@
       <br>
       <br>
       <div>
+        <button mat-button matStepperPrevious>Előző</button>
         <button mat-button matStepperNext (click)="onChange()">Következő</button>
       </div>
     </form>
@@ -199,7 +217,7 @@
     <br>
     <div>
       <button mat-button matStepperPrevious>Előző</button>
-      <button mat-raised-button color="primary" (click)="generate()">Generálás</button>
+      <button mat-raised-button color="primary" (click)="getData()">Generálás</button>
       <button mat-raised-button color="warn" (click)="stepper.reset()" (click)="reset()">Újra</button>
     </div>
     <br>
