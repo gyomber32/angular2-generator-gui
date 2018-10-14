@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { interval } from "rxjs";
+import { FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
 
 /* Services */
 import { GenderService } from '../../utils/gender.service';
@@ -16,8 +15,6 @@ import { LeftLowerLungService } from '../../utils/left-lower-lung.service';
 import { LeftUpperLungService } from '../../utils/left-upper-lung.service';
 import { RightLowerLungService } from '../../utils/right-lower-lung.service';
 import { RightUpperLungService } from '../../utils/right-upper-lung.service';
-import { Observable } from 'rxjs';
-import { subscribeOn } from 'rxjs/operators';
 
 @Component({
     selector: 'app-wizard',
@@ -38,6 +35,8 @@ export class WizardComponent implements OnInit {
     seventhFormGroup: FormGroup;
     eighthFormGroup: FormGroup;
     ninthFormGroup: FormGroup;
+
+    rateControl: FormControl;
 
     private firstChecked = false;
     private secondChecked = false;
@@ -62,12 +61,23 @@ export class WizardComponent implements OnInit {
     private tobaccoUse: string;
     private lungSound: string;
 
+    private genderTemp: string;
+    private ageTemp: number;
+    private heightTemp: number;
+    private weightTemp: number;
+    private BloodPressureTemp: string;
+    private bloodGlucoseTemp: number;
+    private bloodOxygenTemp: number;
+    private tobaccoUseTemp: string;
+    private lungSoundTemp: string;
+
     private patient: PatientInterface[];
 
     constructor(private formBuilder: FormBuilder, private genderService: GenderService, private ageService: AgeService, private heightService: HeightService, private weightService: WeightService, private systolicBloodPressureService: SystolicBloodPressureService, private diastolicBloodPressureService: DiastolicBloodPressureService, private bloodGlucoseService: BloodGlucoseService, private bloodOxygenService: BloodOxygenService, private tobaccoUseService: TobaccoUseService, private leftLowerLungService: LeftLowerLungService, private leftUpperLungService: LeftUpperLungService, private rightLowerLungService: RightLowerLungService, private rightUpperLungService: RightUpperLungService) { }
 
     ngOnInit() {
         console.log("onInit called");
+
         this.zeroFormGroup = this.formBuilder.group({
             zeroCtrl: ['', Validators.required]
         });
@@ -75,23 +85,23 @@ export class WizardComponent implements OnInit {
             firstCtrl: [{ value: this.gender, disabled: !(this.firstChecked) }, Validators.required]
         });
         this.secondFormGroup = this.formBuilder.group({
-            secondCtrl: [{ value: this.age, disabled: !(this.secondChecked) }, Validators.required]
+            secondCtrl: [{ value: this.age, disabled: !(this.secondChecked) }, Validators.compose([Validators.max(100), Validators.min(1), Validators.required])]
         });
         this.thirdFormGroup = this.formBuilder.group({
-            thirdCtrl: [{ value: this.height, disabled: !(this.thirdChecked) }, Validators.required]
+            thirdCtrl: [{ value: this.height, disabled: !(this.thirdChecked) }, Validators.compose([Validators.max(200), Validators.min(60), Validators.required])]
         });
         this.fourthFormGroup = this.formBuilder.group({
-            fourthCtrl: [{ value: this.weight, disabled: !(this.fourthChecked) }, Validators.required]
+            fourthCtrl: [{ value: this.weight, disabled: !(this.fourthChecked) }, Validators.compose([Validators.max(120), Validators.min(40), Validators.required])]
         });
         this.fifthFormGroup = this.formBuilder.group({
-            systolicCtrl: [{ value: this.systolicBloodPressure, disabled: !(this.fifthChecked) }, Validators.required],
-            diastolicCtrl: [{ value: this.diastolicBloodPressure, disabled: !(this.fifthChecked) }, Validators.required]
+            systolicCtrl: [{ value: this.systolicBloodPressure, disabled: !(this.fifthChecked) }, Validators.compose([Validators.max(220), Validators.min(40), Validators.required])],
+            diastolicCtrl: [{ value: this.diastolicBloodPressure, disabled: !(this.fifthChecked) }, Validators.compose([Validators.max(140), Validators.min(20), Validators.required])]
         });
         this.sixthFormGroup = this.formBuilder.group({
-            sixthCtrl: [{ value: this.bloodGlucose, disabled: !(this.sixthChecked) }, Validators.required]
+            sixthCtrl: [{ value: this.bloodGlucose, disabled: !(this.sixthChecked) }, Validators.compose([Validators.max(380), Validators.min(50), Validators.required])]
         });
         this.seventhFormGroup = this.formBuilder.group({
-            seventhCtrl: [{ value: this.bloodOxygen, disabled: !(this.seventhChecked) }, Validators.required]
+            seventhCtrl: [{ value: this.bloodOxygen, disabled: !(this.seventhChecked) }, Validators.compose([Validators.max(100), Validators.min(50), Validators.required])]
         });
         this.eighthFormGroup = this.formBuilder.group({
             eighthCtrl: [{ value: this.tobaccoUse, disabled: !(this.eighthChecked) }, Validators.required]
@@ -122,23 +132,23 @@ export class WizardComponent implements OnInit {
             firstCtrl: [{ value: this.gender, disabled: !(this.firstChecked) }, Validators.required]
         });
         this.secondFormGroup = this.formBuilder.group({
-            secondCtrl: [{ value: this.age, disabled: !(this.secondChecked) }, Validators.required]
+            secondCtrl: [{ value: this.age, disabled: !(this.secondChecked) }, Validators.compose([Validators.max(100), Validators.min(1), Validators.required])]
         });
         this.thirdFormGroup = this.formBuilder.group({
-            thirdCtrl: [{ value: this.height, disabled: !(this.thirdChecked) }, Validators.required]
+            thirdCtrl: [{ value: this.height, disabled: !(this.thirdChecked) }, Validators.compose([Validators.max(200), Validators.min(60), Validators.required])]
         });
         this.fourthFormGroup = this.formBuilder.group({
-            fourthCtrl: [{ value: this.weight, disabled: !(this.fourthChecked) }, Validators.required]
+            fourthCtrl: [{ value: this.weight, disabled: !(this.fourthChecked) }, Validators.compose([Validators.max(120), Validators.min(40), Validators.required])]
         });
         this.fifthFormGroup = this.formBuilder.group({
-            systolicCtrl: [{ value: this.systolicBloodPressure, disabled: !(this.fifthChecked) }, Validators.required],
-            diastolicCtrl: [{ value: this.diastolicBloodPressure, disabled: !(this.fifthChecked) }, Validators.required]
+            systolicCtrl: [{ value: this.systolicBloodPressure, disabled: !(this.fifthChecked) }, Validators.compose([Validators.max(220), Validators.min(40), Validators.required])],
+            diastolicCtrl: [{ value: this.diastolicBloodPressure, disabled: !(this.fifthChecked) }, Validators.compose([Validators.max(140), Validators.min(20), Validators.required])]
         });
         this.sixthFormGroup = this.formBuilder.group({
-            sixthCtrl: [{ value: this.bloodGlucose, disabled: !(this.sixthChecked) }, Validators.required]
+            sixthCtrl: [{ value: this.bloodGlucose, disabled: !(this.sixthChecked) }, Validators.compose([Validators.max(20), Validators.min(2), Validators.required])]
         });
         this.seventhFormGroup = this.formBuilder.group({
-            seventhCtrl: [{ value: this.bloodOxygen, disabled: !(this.seventhChecked) }, Validators.required]
+            seventhCtrl: [{ value: this.bloodOxygen, disabled: !(this.seventhChecked) }, Validators.compose([Validators.max(100), Validators.min(50), Validators.required])]
         });
         this.eighthFormGroup = this.formBuilder.group({
             eighthCtrl: [{ value: this.tobaccoUse, disabled: !(this.eighthChecked) }, Validators.required]
@@ -292,7 +302,7 @@ export class WizardComponent implements OnInit {
     getGender() {
         return this.genderService.getGender(this.gender).toPromise().then((data) => {
             console.log("The gender is: ", data);
-            //this.patient.push(data[0].gender);
+            this.genderTemp = data[0].gender;
         }, (error) => {
             console.log(error);
         });
@@ -301,7 +311,7 @@ export class WizardComponent implements OnInit {
     getAge() {
         return this.ageService.getAge(this.age).toPromise().then((data) => {
             console.log("The age is: ", data);
-            //this.patient.age = data[0].age;
+            this.ageTemp = data[0].age;
         }, (error) => {
             console.log(error);
         });
@@ -310,7 +320,7 @@ export class WizardComponent implements OnInit {
     getHeight() {
         return this.heightService.getHeight(this.height).toPromise().then((data) => {
             console.log("The height is: ", data);
-            //this.patient.height = data[0].height;
+            this.heightTemp = data[0].valuenum;
         }, (error) => {
             console.log(error);
         });
@@ -319,37 +329,34 @@ export class WizardComponent implements OnInit {
     getWeight() {
         return this.weightService.getWeight(this.weight).toPromise().then((data) => {
             console.log("The weight is: ", data);
-            //this.patient.weight = data[0].weight;
+            this.weightTemp = data[0].valuenum;
         }, (error) => {
             console.log(error);
         });
     }
 
     getSystolicBloodPressure() {
-        let systolic = '';
         return this.systolicBloodPressureService.getSystolicBloodPressure(this.systolicBloodPressure).toPromise().then((data) => {
             console.log("The systolic is: ", data);
-            systolic = data[0].systolic;
+            this.BloodPressureTemp = data[0].valuenum + ' / ';
         }, (error) => {
             console.log(error);
         });
     }
 
     getDiastolicBloodPressure() {
-        let diastolic = '';
         return this.diastolicBloodPressureService.getDiastolicBloodPressure(this.diastolicBloodPressure).toPromise().then((data) => {
             console.log("The diastolic is:", data);
-            diastolic = data[0].diastolic;
-            //this.patient.bloodPressure = (systolic + '/' + diastolic);
+            this.BloodPressureTemp += data[0].valuenum;
         }, (error) => {
             console.log(error);
         });
     }
 
-    getGlucose() {
+    getBloodGlucose() {
         return this.bloodGlucoseService.getBloodGlucose(this.bloodGlucose).toPromise().then((data) => {
             console.log("The bloodglucose is: ", data);
-            //this.patient.bloodGlucose = data[0].bloodglucose;
+            this.bloodGlucoseTemp = data[0].valuenum / 18;
         }, (error) => {
             console.log(error);
         });
@@ -358,7 +365,7 @@ export class WizardComponent implements OnInit {
     getBloodOxygen() {
         return this.bloodOxygenService.getBloodOxygen(this.bloodOxygen).toPromise().then((data) => {
             console.log("The bloodOxygen is: ", data);
-            //this.patient.bloodOxygen = data[0].bloodOxygen;
+            this.bloodOxygenTemp = data[0].valuenum;
         }, (error) => {
             console.log(error);
         });
@@ -367,17 +374,16 @@ export class WizardComponent implements OnInit {
     getTobaccoUse() {
         return this.tobaccoUseService.getTobaccoUse(this.tobaccoUse).toPromise().then((data) => {
             console.log("The tobaccoUse is: ", data);
-            //this.patient.tobaccoUse = data[0].tobaccoUse;
+            this.tobaccoUseTemp = data[0].value;
         }, (error) => {
             console.log(error);
         });
     }
 
     getLeftLowerLung() {
-        let lll = '';
         return this.leftLowerLungService.getLeftLowerLung(this.lungSound).toPromise().then((data) => {
             console.log("1. The leftLowerLungSound is: ", data);
-            lll = data[0].lll;
+            this.lungSoundTemp = data[0].value + ' / ';
         }, (error) => {
             console.log(error);
         });
@@ -385,30 +391,27 @@ export class WizardComponent implements OnInit {
     }
 
     getLeftUpperLung() {
-        let lul = '';
         return this.leftUpperLungService.getLeftUpperLung(this.lungSound).toPromise().then((data) => {
             console.log("2. The leftUpperLungSound is: ", data);
-            lul = data[0].lul;
+            this.lungSoundTemp += data[0].value + ' / ';
         }, (error) => {
             console.log(error);
         });
     }
 
     getRightLowerLung() {
-        let rll = '';
         return this.rightLowerLungService.getRightLowerLung(this.lungSound).toPromise().then((data) => {
             console.log("3. The rigthLowerLungSound is: ", data);
-            rll = data[0].rll;
+            this, this.lungSoundTemp += data[0].value + ' / ';
         }, (error) => {
             console.log(error);
         });
     }
 
     getRightUpperLung() {
-        let rul = '';
         return this.rightUpperLungService.getRightUpperLung(this.lungSound).toPromise().then((data) => {
             console.log("4. The rigthUpperLungSound is: ", data);
-            rul = data[0].rul;
+            this.lungSoundTemp += data[0].value;
         }, (error) => {
             console.log(error);
         });
@@ -416,7 +419,6 @@ export class WizardComponent implements OnInit {
 
     async getData() {
         for (let i = 1; i <= this.quantity; i++) {
-
             if (this.firstChecked == true) {
                 await this.getGender();
             }
@@ -434,7 +436,7 @@ export class WizardComponent implements OnInit {
                 await this.getDiastolicBloodPressure();
             }
             if (this.sixthChecked == true) {
-                await this.getGlucose();
+                await this.getBloodGlucose();
             }
             if (this.seventhChecked == true) {
                 await this.getBloodOxygen();
@@ -448,8 +450,9 @@ export class WizardComponent implements OnInit {
                 await this.getRightLowerLung();
                 await this.getRightUpperLung();
             }
+            this.patient = [{ "gender": this.genderTemp, "age": this.ageTemp, "height": this.heightTemp, "weight": this.weightTemp, "bloodPressure": this.BloodPressureTemp, "bloodGlucose": this.bloodGlucoseTemp, "bloodOxygen": this.bloodOxygenTemp, "tobaccoUse": this.tobaccoUseTemp, "lungSound": this.lungSoundTemp }];
             console.log(i + " generálás készen van.");
-            //console.log(this.patient);
+            console.log(i + "-edik páciens: " , this.patient);
         }
         console.log("GENERÁLÁS VÉGE!!!");
     }

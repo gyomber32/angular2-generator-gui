@@ -41,7 +41,7 @@
       <br>
       <br>
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Kor" type="number" [disabled]="!secondChecked" [(ngModel)]="age" formControlName="secondCtrl">
+        <input matInput placeholder="Kor" type="number" min="1" max="100" [disabled]="!secondChecked" [(ngModel)]="age" formControlName="secondCtrl">
       </mat-form-field>
       <br>
       <br>
