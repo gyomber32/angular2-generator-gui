@@ -1,21 +1,4 @@
 <mat-horizontal-stepper [linear]="isLinear" #stepper>
-  <!-- <mat-step [stepControl]="zeroFormGroup">
-    <form [formGroup]="zeroFormGroup">
-      <ng-template matStepLabel>Mennyiség</ng-template>
-      <br>
-      <br>
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Mennyiség" type="number" [(ngModel)]="quantity" formControlName="zeroCtrl">
-      </mat-form-field>
-      <br>
-      <br>
-      <div>
-        <button mat-button matStepperNext (click)="onChange()">Következő</button>
-      </div>
-      <br>
-      <br>
-    </form>
-  </mat-step> -->
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel>Nem</ng-template>
@@ -41,7 +24,8 @@
       <br>
       <br>
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Kor" type="number" min="1" max="100" [disabled]="!secondChecked" [(ngModel)]="age" formControlName="secondCtrl">
+        <input matInput placeholder="Kor" type="number" min="1" max="100" [disabled]="!secondChecked" [(ngModel)]="age"
+          formControlName="secondCtrl">
       </mat-form-field>
       <br>
       <br>
@@ -197,9 +181,28 @@
         <mat-radio-button value="Rhonchi">Zajos</mat-radio-button>
         <mat-radio-button value="Insp Wheeze">Belégzéskor ziháló</mat-radio-button>
         <mat-radio-button value="Pleural Friction">Pleurális dörzszörej</mat-radio-button>
-        <mat-radio-button value="Coarse">Durva</mat-radio-button>
+        <mat-radio-button value="Coarse">Dúrva</mat-radio-button>
         <mat-radio-button value="Ins/Exp Wheeze">Be- és kilégzéskor ziháló</mat-radio-button>
       </mat-radio-group>
+      <br>
+      <br>
+      <div>
+        <button mat-button matStepperPrevious>Előző</button>
+        <button mat-button matStepperNext (click)="onChange()">Következő</button>
+      </div>
+      <br>
+      <br>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="zeroFormGroup">
+    <form [formGroup]="zeroFormGroup">
+      <ng-template matStepLabel>Mennyiség</ng-template>
+      Mennyiség
+      <br>
+      <br>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Mennyiség" type="number" [(ngModel)]="quantity" formControlName="zeroCtrl">
+      </mat-form-field>
       <br>
       <br>
       <div>

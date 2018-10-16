@@ -8,12 +8,12 @@ export class BloodGlucoseService {
 
   constructor(private bloodGlucoseApi: BloodGlucoseApi) { }
 
-  public getBloodGlucose(bloodGlucose?: number): Observable<any> {
+  public getBloodGlucose(quantity: number, bloodGlucose?: number): Observable<any> {
     if (bloodGlucose == null) {
-      return this.bloodGlucoseApi.getBloodGlucose();
+      return this.bloodGlucoseApi.getBloodGlucose(bloodGlucose, quantity);
     }
     if (bloodGlucose != null) {
-      return this.bloodGlucoseApi.getBloodGlucose((bloodGlucose * 18));
+      return this.bloodGlucoseApi.getBloodGlucose((bloodGlucose * 18), quantity);
     }
   }
 

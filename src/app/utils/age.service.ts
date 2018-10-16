@@ -8,12 +8,12 @@ export class AgeService {
 
   constructor(private ageApi: AgeApi) { }
 
-  public getAge(age?: number): Observable <any> {
+  public getAge(quantity: number, age?: number): Observable <any> {
     if (age == null) {
-      return this.ageApi.getAge();
+      return this.ageApi.getAge(age, quantity);
     }
     if (age != null) {
-      return this.ageApi.getAge(age);
+      return this.ageApi.getAge(age, quantity);
     }
   }
 

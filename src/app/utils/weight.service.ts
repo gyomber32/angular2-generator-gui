@@ -8,12 +8,12 @@ export class WeightService {
 
   constructor(private weightApi: WeightApi) { }
 
-  public getWeight(weight?: number): Observable<any> {
+  public getWeight(quantity: number, weight?: number): Observable<any> {
     if (weight == null) {
-      return this.weightApi.getWeight();
+      return this.weightApi.getWeight(weight, quantity);
     }
     if (weight != null) {
-      return this.weightApi.getWeight(weight);
+      return this.weightApi.getWeight(weight, quantity);
     }
   }
 

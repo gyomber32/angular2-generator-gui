@@ -8,12 +8,12 @@ export class TobaccoUseService {
 
   constructor(private tobaccoUseApi: TobaccoUseApi) { }
 
-  public getTobaccoUse(tobaccoUse?: string): Observable<any> {
+  public getTobaccoUse(quantity: number, tobaccoUse?: string): Observable<any> {
     if (tobaccoUse == undefined) {
-      return this.tobaccoUseApi.getTobaccoUse();
+      return this.tobaccoUseApi.getTobaccoUse(tobaccoUse, quantity);
     }
     if (tobaccoUse != undefined) {
-      return this.tobaccoUseApi.getTobaccoUse(tobaccoUse);
+      return this.tobaccoUseApi.getTobaccoUse(tobaccoUse, quantity);
     }
   }
 

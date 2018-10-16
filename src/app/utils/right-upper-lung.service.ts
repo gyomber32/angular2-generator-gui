@@ -8,12 +8,12 @@ export class RightUpperLungService {
 
   constructor(private rightUpperLungApi: RightUpperLungApi) { }
 
-  public getRightUpperLung(rul?: string): Observable<any> {
+  public getRightUpperLung(quantity: number, rul?: string): Observable<any> {
     if (rul == undefined) {
-      return this.rightUpperLungApi.getRul();
+      return this.rightUpperLungApi.getRul(rul, quantity);
     }
     if (rul != undefined) {
-      return this.rightUpperLungApi.getRul(rul);
+      return this.rightUpperLungApi.getRul(rul, quantity);
     }
   }
 

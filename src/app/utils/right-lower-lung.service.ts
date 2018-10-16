@@ -8,12 +8,12 @@ export class RightLowerLungService {
 
   constructor(private rightLowerLungApi: RightLowerLungApi) { }
 
-  public getRightLowerLung(rll?: string): Observable<any> {
+  public getRightLowerLung(quantity: number, rll?: string): Observable<any> {
     if (rll == undefined) {
-      return this.rightLowerLungApi.getRll();
+      return this.rightLowerLungApi.getRll(rll, quantity);
     }
     if (rll != undefined) {
-      return this.rightLowerLungApi.getRll(rll);
+      return this.rightLowerLungApi.getRll(rll, quantity);
     }
   }
 

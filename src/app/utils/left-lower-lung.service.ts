@@ -8,12 +8,12 @@ export class LeftLowerLungService {
 
   constructor(private leftLowerLungApi: LeftLowerLungApi) { }
 
-  public getLeftLowerLung(lll?: string): Observable<any> {
+  public getLeftLowerLung(quantity: number, lll?: string): Observable<any> {
     if (lll == undefined) {
-      return this.leftLowerLungApi.getLll();
+      return this.leftLowerLungApi.getLll(lll, quantity);
     }
     if (lll != undefined) {
-      return this.leftLowerLungApi.getLll(lll);
+      return this.leftLowerLungApi.getLll(lll, quantity);
     }
   }
 

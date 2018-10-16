@@ -1,15 +1,14 @@
 import { Routes, RouterModule } from '@angular/router';
 
-import { GeneratingTypeComponent } from './main/generating-type/generating-type.component';
-import { UploadTypeComponent } from './main/upload-type/upload-type.component';
-import { MasterPageComponent } from './main/master-page/master-page.component';
-import { UploadTableComponent } from './main/upload-table/upload-table.component';
-import { WizardComponent } from './main/wizard/wizard.component';
+import { MasterPageComponent } from './main/master-page.component';
+
+import { SelectorComponent } from './main/selector/selector.component';
+import { GeneratorComponent } from './main/generator/generator.component';
 
 const appRoutes: Routes = [
     { path: 'master-page', component: MasterPageComponent },
-    { path: 'upload-table', component: UploadTableComponent },
-    { path: 'wizard', component: WizardComponent },
+    { path: 'selector', component: SelectorComponent },
+    { path: 'generator', component: GeneratorComponent },
     { path: '', component: MasterPageComponent },
     { path: '**', redirectTo: '' }
 ];

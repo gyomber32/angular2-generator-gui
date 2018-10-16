@@ -21,11 +21,15 @@ import { RightLowerLungService } from './utils/right-lower-lung.service';
 import { RightUpperLungService } from './utils/right-upper-lung.service';
 
 /* Components */
-import { GeneratingTypeComponent } from './main/generating-type/generating-type.component';
-import { UploadTypeComponent } from './main/upload-type/upload-type.component';
-import { MasterPageComponent } from './main/master-page/master-page.component';
-import { UploadTableComponent } from './main/upload-table/upload-table.component';
-import { WizardComponent } from './main/wizard/wizard.component';
+import { MasterPageComponent } from './main/master-page.component';
+
+import { SelectorComponent } from './main/selector/selector.component';
+import { GeneratorComponent } from './main/generator/generator.component';
+
+import { GeneratingTypeComponent } from './main/selector/generating-type/generating-type.component';
+import { UploadTypeComponent } from './main/selector/upload-type/upload-type.component';
+import { UploadTableComponent } from './main/generator/upload-table/upload-table.component';
+import { WizardComponent } from './main/generator/wizard/wizard.component';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -41,6 +45,8 @@ import { SDKBrowserModule } from './shared/sdk';
   declarations: [
     AppComponent,
     MasterPageComponent,
+    SelectorComponent,
+    GeneratorComponent,
     GeneratingTypeComponent,
     UploadTypeComponent,
     UploadTableComponent,

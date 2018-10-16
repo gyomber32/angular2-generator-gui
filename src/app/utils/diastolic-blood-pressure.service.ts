@@ -8,12 +8,12 @@ export class DiastolicBloodPressureService {
 
   constructor(private diastolicBloodPressureApi: DiastolicBloodPressureApi) { }
 
-  public getDiastolicBloodPressure(diastolicBloodPressure?: number): Observable<any> {
+  public getDiastolicBloodPressure(quantity: number, diastolicBloodPressure?: number): Observable<any> {
     if (diastolicBloodPressure == null) {
-      return this.diastolicBloodPressureApi.getDiastolicBloodPressure();
+      return this.diastolicBloodPressureApi.getDiastolicBloodPressure(diastolicBloodPressure, quantity);
     }
     if (diastolicBloodPressure != null) {
-      return this.diastolicBloodPressureApi.getDiastolicBloodPressure(diastolicBloodPressure);
+      return this.diastolicBloodPressureApi.getDiastolicBloodPressure(diastolicBloodPressure, quantity);
     }
   }
 

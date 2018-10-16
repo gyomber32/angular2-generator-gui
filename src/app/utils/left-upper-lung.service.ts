@@ -7,12 +7,12 @@ export class LeftUpperLungService {
 
   constructor(private leftUpperLungApi: LeftUpperLungApi) { }
 
-  public getLeftUpperLung(@Optional() lul: string) {
+  public getLeftUpperLung(quantity: number, lul?: string) {
     if (lul == undefined) {
-      return this.leftUpperLungApi.getLul();
+      return this.leftUpperLungApi.getLul(lul, quantity);
     }
     if (lul != undefined) {
-      return this.leftUpperLungApi.getLul(lul);
+      return this.leftUpperLungApi.getLul(lul, quantity);
     }
   }
 

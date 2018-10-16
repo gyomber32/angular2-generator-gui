@@ -8,12 +8,12 @@ export class GenderService {
 
   constructor(private genderApi: GenderApi) { }
 
-  getGender(gender?: string): Observable<any> {
+  getGender(quantity: number, gender?: string): Observable<any> {
     if (gender == null) {
-      return this.genderApi.getGender();
+      return this.genderApi.getGender(gender, quantity);
     }
     if (gender != null) {
-      return this.genderApi.getGender(gender);
+      return this.genderApi.getGender(gender, quantity);
     }
   }
 

@@ -8,12 +8,12 @@ export class HeightService {
 
   constructor(private heightApi: HeightApi) { }
 
-  public getHeight(height?: number): Observable<any> {
+  public getHeight(quantity: number, height?: number): Observable<any> {
     if (height == null) {
-      return this.heightApi.getHeight();
+      return this.heightApi.getHeight(height, quantity);
     }
     if (height != null) {
-      return this.heightApi.getHeight(height);
+      return this.heightApi.getHeight(height, quantity);
     }
   }
 

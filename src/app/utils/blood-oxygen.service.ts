@@ -8,12 +8,12 @@ export class BloodOxygenService {
 
   constructor(private bloodOxygenApi: BloodOxygenApi) { }
 
-  public getBloodOxygen(bloodOxygen?: number): Observable<any> {
+  public getBloodOxygen(quantity: number, bloodOxygen?: number): Observable<any> {
     if (bloodOxygen == null) {
-      return this.bloodOxygenApi.getBloodOxygen();
+      return this.bloodOxygenApi.getBloodOxygen(bloodOxygen, quantity);
     }
     if (bloodOxygen != null) {
-      return this.bloodOxygenApi.getBloodOxygen(bloodOxygen);
+      return this.bloodOxygenApi.getBloodOxygen(bloodOxygen, quantity);
     }
   }
 
