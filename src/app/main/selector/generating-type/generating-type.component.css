@@ -1,41 +1,33 @@
+.container {
+  padding-top: 5px;
+}
+
 .radio-group {
-    display: inline-flex;
-    flex-direction: column;
-    color: white;
+  display: inline-flex;
+  flex-direction: column;
+  margin-left: 1rem;
 }
 
 .radio-button {
-    margin: 5px;
+  margin: 5px;
 }
 
 .choose-label {
-    font-size: 150%;
-    color: white;
+  font-size: 150%;
 }
 
-.container {
-    position: absolute;
-    display: inline-block;
-    width: 40%;
-    top: 9rem;
-    left: 15rem;
+.endpoint-container {
+  width: 40%;
+  margin-left: 4rem;
 }
 
 .endpoint-label {
-    font-size: 100%;
-    position: relative;
-    color: white;
-    margin: auto;
+  font-size: 100%;
+  font-weight: bold;
+  margin: auto;
 }
 
 .endpoint-input {
-    position: relative;
-    background-color: white;
-    width: 50%;
-    margin: auto;
-}
-
-.endpoint-button {
-    position: relative;
-    margin: auto;
+  width: 50%;
+  margin: auto;
 }

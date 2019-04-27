@@ -1,45 +1,41 @@
-.upload-label{
-    font-size: 150%;
-    color: white;
-    display: inline;
-    position: absolute;
-    top: 10em;
-    left: 0.5em;
+.container {
+  padding-top: 5px;
+}
+
+.upload-label {
+  font-size: 150%;
+  display: inline;
+  top: 10em;
+  left: 0.5em;
+  padding: 5px;
 }
 
 .example-radio-group {
-    display: inline-flex;
-    flex-direction: column;
-    position: absolute;
-    color: white;
-    top: 15em;
-    left: 8em;
+  display: inline-flex;
+  flex-direction: column;
+  top: 15em;
+  margin-left: 1rem;
 }
 
 .example-radio-button {
-    margin: 5px;
+  margin-top: 5px;
+  margin-left: 20px;
 }
 
-.download-label{
-    font-size: 100%;
-    display: inline;
-    position: absolute;
-    color: white;
-    top: 20em;
-    left: 15em;
+.download-container {
+  display: inline;
+  width: 100%;
 }
 
-.download-input{
-    display: inline;
-    position: absolute;
-    background-color: white;
-    top: 20rem;
-    left: 21rem;
+.download-label {
+  font-size: 100%;
+  font-weight: bold;
 }
 
-.download-button{
-    display: inline;
-    position: absolute;
-    top: 19.5rem;
-    left: 33rem;
+.download-input {
+  width: 10%;
+}
+
+.download-button {
+  margin-left: 5px;
 }

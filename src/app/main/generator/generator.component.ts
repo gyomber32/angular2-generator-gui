@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-    selector: 'generator',
+    selector: 'app-generator',
     templateUrl: './generator.component.html',
     styleUrls: ['./generator.component.css']
 })
@@ -29,6 +29,6 @@ export class GeneratorComponent implements OnInit {
 
     }
 
-    ngOnInit() {
-    }
+    ngOnInit() { }
+
 }

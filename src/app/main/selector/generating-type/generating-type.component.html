@@ -1,13 +1,19 @@
 <label class="choose-label">Kérjük válasszon:</label>
 
-<mat-radio-group class="radio-group" [(ngModel)]="selectedType" (change)="show()">
-  <mat-radio-button class="radio-button" *ngFor="let type of types" [value]="type">
-    <option>{{type}}</option>
-  </mat-radio-button>
-</mat-radio-group>
+<div class='container'>
+  <mat-radio-group class="radio-group" [(ngModel)]="selectedType">
+    <mat-radio-button class="radio-button" value='Ütemezett adatgenerálás' (change)='selectType($event)'
+      matTooltip="Az adatok a megadott időben kerülnek továbbküldésre.">Ütemezett adatgenerálás</mat-radio-button>
+    <mat-radio-button class="radio-button" value='Egyszeri adatgenerálás' (change)='selectType($event)'
+      matTooltip="A generált adatok egyben kerülnek továbbküldésre.">Egyszeri
+      adatgenerálás</mat-radio-button>
+  </mat-radio-group>
 
-<div class="container" *ngIf="visibility">
-  <label class="endpoint-label">Végpontok:</label>
-  <input class="endpoint-input" matInput value="">
-  <button class="endpoint-button" mat-raised-button color="primary">URL hozzáadás</button>
+  <div class="endpoint-container">
+    <label class="endpoint-label"
+      matTooltip="Azon alkalmazások URL-je, ahová a generált adatokat ki szeretné küldeni.">Végpontok:</label>
+    <div *ngFor=' let rest of restEndpoints'>
+      <mat-checkbox [value]='rest.url' (change)='setRestEnpoints($event)'>{{ rest.name }}</mat-checkbox>
+    </div>
+  </div>
 </div>

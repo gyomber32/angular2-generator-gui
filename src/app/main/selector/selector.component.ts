@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-    selector: 'selector',
+    selector: 'app-selector',
     templateUrl: './selector.component.html',
     styleUrls: ['./selector.component.css']
 })
@@ -23,6 +23,6 @@ export class SelectorComponent implements OnInit {
 
     }
 
-    ngOnInit() {
-    }
+    ngOnInit() { }
+
 }

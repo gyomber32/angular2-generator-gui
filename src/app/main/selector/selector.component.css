@@ -1,9 +1,14 @@
 .title {
-    display: block;
-    text-align: center;
-    color: white;
+  display: block;
+  text-align: center;
+  color: white;
+}
+
+.card{
+  width: 50%;
+  margin: auto;
 }
 
 .start-button {
-    
+  float: right;
 }

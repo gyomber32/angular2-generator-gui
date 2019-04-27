@@ -9,24 +9,37 @@ export class GeneratingTypeComponent implements OnInit {
 
   constructor() { }
 
-  private visibility: boolean = false;
-
+  private restEndpoints = [
+    {
+      name: 'endPoint1',
+      url: 'http://endPoint1'
+    },
+    {
+      name: 'endPoint2',
+      url: 'http://endPoint2'
+    },
+    {
+      name: 'endPoint3',
+      url: 'http://endPoint3'
+    }
+  ];
+  private selectedRestEndpoints = new Array<String>();
+  private visibility = false;
   private selectedType: string;
 
-  types = [
-    'Egyszeri adatgenerálás',
-    'Ütemezett adatgenerálás'
-  ];
+  public selectType(event: any): void {
+    this.selectedType = event.value;
+  }
 
-  show(){
-    if(this.selectedType == 'Ütemezett adatgenerálás'){
-      this.visibility = true;
-    }else{
-      this.visibility = false;
+  public setRestEnpoints(event: any): void {
+    if (!this.selectedRestEndpoints.includes(event.source.value)) {
+      this.selectedRestEndpoints.push(event.source.value);
+    } else {
+      const index = this.selectedRestEndpoints.indexOf(event.source.value);
+      this.selectedRestEndpoints.splice(index, 1);
     }
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }
