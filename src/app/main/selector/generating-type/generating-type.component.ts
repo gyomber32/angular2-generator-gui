@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material';
+import { OneTimeGenerationDialog } from './schedule-dialog/one-time-generation-dialog.component';
+import { ScheduledGenerationDialog } from './schedule-dialog/scheduled-generation-dialog.component';
 
 @Component({
   selector: 'app-generating-type',
@@ -7,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GeneratingTypeComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   private restEndpoints = [
     {
@@ -26,9 +29,28 @@ export class GeneratingTypeComponent implements OnInit {
   private selectedRestEndpoints = new Array<String>();
   private visibility = false;
   private selectedType: string;
+  private dateTime: string;
 
   public selectType(event: any): void {
     this.selectedType = event.value;
+
+    if (this.selectedType === 'Ütemezett adatgenerálás') {
+      const dialogRef = this.dialog.open(ScheduledGenerationDialog);
+
+      dialogRef.afterClosed().subscribe((result: string) => {
+        console.log('The Scheduled Generation Dialog was closed');
+        this.dateTime = result;
+      });
+    }
+    if (this.selectedType === 'Egyszeri adatgenerálás') {
+      const dialogRef = this.dialog.open(OneTimeGenerationDialog);
+
+      dialogRef.afterClosed().subscribe((result) => {
+        console.log('The One Time Generation Dialog was closed');
+        console.log(result);
+        this.dateTime = result;
+      });
+    }
   }
 
   public setRestEnpoints(event: any): void {

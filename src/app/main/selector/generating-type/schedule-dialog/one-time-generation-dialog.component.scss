@@ -1,0 +1,21 @@
+.dialog_container {
+  min-width: 300px;
+  max-width: 500px;
+
+  &_dateTime {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  &_label {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  &_buttons {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}

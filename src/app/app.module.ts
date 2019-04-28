@@ -22,8 +22,14 @@ import { UploadTypeComponent } from './main/selector/upload-type/upload-type.com
 import { UploadTableComponent } from './main/generator/upload-table/upload-table.component';
 import { WizardComponent } from './main/generator/wizard/wizard.component';
 
+import { OneTimeGenerationDialog } from './main/selector/generating-type/schedule-dialog/one-time-generation-dialog.component';
+import { ScheduledGenerationDialog } from './main/selector/generating-type/schedule-dialog/scheduled-generation-dialog.component';
+
 /* Material module */
 import { AppMaterialModule } from './app.material.module';
+/* Timepicker module */
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+
 
 /* Routing modules */
 import { routing } from './app.routes';
@@ -41,7 +47,9 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     GeneratingTypeComponent,
     UploadTypeComponent,
     UploadTableComponent,
-    WizardComponent
+    WizardComponent,
+    OneTimeGenerationDialog,
+    ScheduledGenerationDialog
   ],
   imports: [
     BrowserModule,
@@ -54,11 +62,17 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     BrowserModule,
     HttpClientModule,
     SDKBrowserModule.forRoot(),
-    SocketIoModule.forRoot(config)
+    SocketIoModule.forRoot(config),
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule
   ],
   providers: [
     UploadTypeComponent,
     WebsocketService
+  ],
+  entryComponents: [
+    OneTimeGenerationDialog,
+    ScheduledGenerationDialog
   ],
   bootstrap: [AppComponent]
 })

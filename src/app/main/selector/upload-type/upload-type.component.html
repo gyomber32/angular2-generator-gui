@@ -1,15 +1,9 @@
 <label class="upload-label">Feltöltések:</label>
 <div class='container'>
   <div class='example-radio-group'>
-    <mat-checkbox class="example-margin" (change)="show()"
-      matTooltip="A generált adatokat lokálisan mentheti számítógépére.">Mentés fájlba</mat-checkbox>
+    <mat-checkbox class="example-margin" matTooltip="A generált adatokat lokálisan mentheti számítógépére.">Mentés
+      fájlba</mat-checkbox>
     <mat-checkbox class="example-margin" matTooltip="Valós időben nyomnonkövetheti az adatok generálását.">Nyomonkövetés
     </mat-checkbox>
-  </div>
-
-  <div class='download-container' *ngIf="visibility">
-    <label class="download-label">Mentés helye:</label>
-    <input class="download-input" matInput value="">
-    <button class="download-button" mat-raised-button color="primary">Tallózás</button>
   </div>
 </div>

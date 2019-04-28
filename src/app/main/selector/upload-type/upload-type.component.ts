@@ -1,5 +1,4 @@
 import { Component, OnInit, Injectable } from '@angular/core';
-import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-upload-type',
@@ -10,12 +9,6 @@ import { MatInputModule } from '@angular/material/input';
 export class UploadTypeComponent implements OnInit {
 
   constructor() { }
-
-  private visibility = false;
-
-  public show() {
-    this.visibility = !this.visibility;
-  }
 
   ngOnInit() { }
 

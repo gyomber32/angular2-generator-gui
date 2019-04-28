@@ -21,21 +21,3 @@
   margin-top: 5px;
   margin-left: 20px;
 }
-
-.download-container {
-  display: inline;
-  width: 100%;
-}
-
-.download-label {
-  font-size: 100%;
-  font-weight: bold;
-}
-
-.download-input {
-  width: 10%;
-}
-
-.download-button {
-  margin-left: 5px;
-}
