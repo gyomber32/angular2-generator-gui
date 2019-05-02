@@ -28,7 +28,7 @@ export class OneTimeGenerationDialog implements OnInit {
 
     onSet(): void {
         if (this.dateTime === undefined) {
-            alert('Beállítás előtt kérem válasszon dátumot');
+            alert('Beállítás előtt kérem válasszon dátumot és időt!');
         } else {
             const dateTime = this.dateToString(this.dateTime);
             this.dialogRef.close(dateTime);
@@ -51,6 +51,7 @@ export class OneTimeGenerationDialog implements OnInit {
         } else {
             dd = '' + date.getDate();
         }
+        
         return yyyy + '-' + mm + '-' + dd + '_' + hours + ':' + minutes;
     }
 

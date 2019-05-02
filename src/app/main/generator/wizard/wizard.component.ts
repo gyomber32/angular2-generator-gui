@@ -1,7 +1,10 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
+import { CommonService } from '../../../services/common.service';
 import { WebsocketService } from '../../../services/websocket.service';
+
+import { Config } from '../../../shared/config.interface';
 
 @Component({
     selector: 'app-wizard',
@@ -54,6 +57,7 @@ export class WizardComponent implements OnInit {
 
     constructor(
         private formBuilder: FormBuilder,
+        private commonService: CommonService,
         private websocketService: WebsocketService) { }
 
     ngOnInit() {
@@ -248,7 +252,20 @@ export class WizardComponent implements OnInit {
             'lungSound': this.lungSound,
             'quantity': this.quantity
         };
-        this.websocketService.sendToServer(configJSON);
+        this.commonService.updateAge(this.age);
+        this.commonService.updateGender(this.gender);
+        this.commonService.updateHeight(this.height);
+        this.commonService.updateWeight(this.weight);
+        this.commonService.updateSystolicBloodPressure(this.systolicBloodPressure);
+        this.commonService.updateDiastolicBloodPressure(this.diastolicBloodPressure);
+        this.commonService.updateBloodGlucose(this.bloodGlucose);
+        this.commonService.updateBloodOxygen(this.bloodOxygen);
+        this.commonService.updateTobaccoUse(this.tobaccoUse);
+        this.commonService.updateLungSound(this.lungSound);
+        this.commonService.updateQuantity(this.quantity);
+        this.commonService.castConfig.subscribe((config: Config) => {
+            this.websocketService.sendToServer(config);
+        });
     }
 }
 

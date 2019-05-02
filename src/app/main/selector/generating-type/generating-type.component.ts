@@ -3,6 +3,8 @@ import { MatDialog, MatDialogRef } from '@angular/material';
 import { OneTimeGenerationDialog } from './schedule-dialog/one-time-generation-dialog.component';
 import { ScheduledGenerationDialog } from './schedule-dialog/scheduled-generation-dialog.component';
 
+import { CommonService } from '../../../services/common.service';
+
 @Component({
   selector: 'app-generating-type',
   templateUrl: './generating-type.component.html',
@@ -10,7 +12,7 @@ import { ScheduledGenerationDialog } from './schedule-dialog/scheduled-generatio
 })
 export class GeneratingTypeComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private commonService: CommonService) { }
 
   private restEndpoints = [
     {
@@ -26,39 +28,41 @@ export class GeneratingTypeComponent implements OnInit {
       url: 'http://endPoint3'
     }
   ];
-  private selectedRestEndpoints = new Array<String>();
+  private selectedRestEndpoints = new Array<string>();
   private visibility = false;
-  private selectedType: string;
-  private dateTime: string;
+  private typeOfGenerating: string;
+  private dateTime: any;
 
   public selectType(event: any): void {
-    this.selectedType = event.value;
-
-    if (this.selectedType === 'Ütemezett adatgenerálás') {
-      const dialogRef = this.dialog.open(ScheduledGenerationDialog);
+    this.typeOfGenerating = event.value;
+    console.log(this.typeOfGenerating);
+    if (this.typeOfGenerating === 'Ütemezett adatgenerálás') {
+      const dialogRef = this.dialog.open(OneTimeGenerationDialog);
 
       dialogRef.afterClosed().subscribe((result: string) => {
         console.log('The Scheduled Generation Dialog was closed');
-        this.dateTime = result;
-      });
-    }
-    if (this.selectedType === 'Egyszeri adatgenerálás') {
-      const dialogRef = this.dialog.open(OneTimeGenerationDialog);
-
-      dialogRef.afterClosed().subscribe((result) => {
-        console.log('The One Time Generation Dialog was closed');
         console.log(result);
+        this.dateTime = [];
         this.dateTime = result;
+        this.commonService.updateTypeOfGenerating(this.typeOfGenerating);
+        this.commonService.updateDateAndTime(this.dateTime);
       });
     }
+    if (this.typeOfGenerating === 'Egyszeri adatgenerálás') {
+      this.dateTime = [];
+      this.commonService.updateTypeOfGenerating(this.typeOfGenerating);
+    }
+
   }
 
   public setRestEnpoints(event: any): void {
     if (!this.selectedRestEndpoints.includes(event.source.value)) {
       this.selectedRestEndpoints.push(event.source.value);
+      this.commonService.updateEndPoints(this.selectedRestEndpoints);
     } else {
       const index = this.selectedRestEndpoints.indexOf(event.source.value);
       this.selectedRestEndpoints.splice(index, 1);
+      this.commonService.updateEndPoints(this.selectedRestEndpoints);
     }
   }
 

@@ -9,7 +9,10 @@ import { AppComponent } from './app.component';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
 /* Services */
+import { CommonService } from './services/common.service';
 import { WebsocketService } from './services/websocket.service';
+
+import { Config } from './shared/config.interface';
 
 /* Components */
 import { MasterPageComponent } from './main/master-page.component';
@@ -68,6 +71,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
   ],
   providers: [
     UploadTypeComponent,
+    Config,
+    CommonService,
     WebsocketService
   ],
   entryComponents: [

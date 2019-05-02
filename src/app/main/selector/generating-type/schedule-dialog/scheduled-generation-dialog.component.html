@@ -1,1 +1,69 @@
-<label>scheduled time</label>
+<div class='dialog_container'>
+    <mat-radio-group aria-label="Ütemezés" [(ngModel)]='type'>
+        <mat-radio-button value="hourly" (change)='change($event)'>Óránként</mat-radio-button>
+        <!-- minden órában fusson le -->
+        <mat-radio-button value="daily" (change)='change($event)'>Naponta</mat-radio-button>
+        <!-- minden nap hány órakor -->
+        <mat-radio-button value="weekly" (change)='change($event)'>Hetente</mat-radio-button>
+        <!-- a hét melyik napján hánykor -->
+    </mat-radio-group>
+    <div *ngIf="type==='hourly'">
+        <label>A generálás a következő egész órától <b>minden órában</b> le fog futni.</label>
+    </div>
+    <div *ngIf="type==='daily'">
+        <div class='dialog_container_dateTime'>
+            <form>
+                <mat-form-field>
+                    <input matInput [owlDateTimeTrigger]="dt" [owlDateTime]="dt" [ngModelOptions]="{standalone: true}"
+                        [(ngModel)]='time' placeholder="Válasszon egy időpontot">
+                    <span [owlDateTimeTrigger]="dt"><i class="fa fa-calendar"></i></span>
+                    <owl-date-time #dt [pickerType]="'timer'"></owl-date-time>
+                </mat-form-field>
+            </form>
+        </div>
+        <div class='dialog_container_label' *ngIf='time'>
+            <label>A generálás minden nap, <b>{{ time | date: 'hh:mm a' }}</b> órakor fog futni.</label>
+        </div>
+    </div>
+    <div *ngIf="type==='weekly'">
+        <div class='dialog_container_dateTime'>
+            <section class="example-section">
+                <mat-checkbox class="example-margin" value="1" (change)='addOrRemoveDay($event)'>Hétfő
+                </mat-checkbox>
+                <mat-checkbox class="example-margin" value="2" (change)='addOrRemoveDay($event)'>Kedd
+                </mat-checkbox>
+                <mat-checkbox class="example-margin" value="3" (change)='addOrRemoveDay($event)'>Szerda
+                </mat-checkbox>
+                <mat-checkbox class="example-margin" value="4" (change)='addOrRemoveDay($event)'>Csütörtök
+                </mat-checkbox>
+                <mat-checkbox class="example-margin" value="5" (change)='addOrRemoveDay($event)'>Péntek
+                </mat-checkbox>
+                <mat-checkbox class="example-margin" value="6" (change)='addOrRemoveDay($event)'>Szombat
+                </mat-checkbox>
+                <mat-checkbox class="example-margin" value="0" (change)='addOrRemoveDay($event)'>Vasárnap
+                </mat-checkbox>
+            </section>
+            <form>
+                <mat-form-field>
+                    <input matInput [owlDateTimeTrigger]="dt" [owlDateTime]="dt" [ngModelOptions]="{standalone: true}"
+                        [(ngModel)]='time' placeholder="Válasszon egy időpontot">
+                    <span [owlDateTimeTrigger]="dt"><i class="fa fa-calendar"></i></span>
+                    <owl-date-time #dt [pickerType]="'timer'"></owl-date-time>
+                </mat-form-field>
+            </form>
+        </div>
+        <div class='dialog_container_label' *ngIf='daysOfWeek'>
+            <label>A generálás minden
+                <!-- <ng-template *ngFor='let day of daysOfWeek'>
+                <b *ngIf='day == 0'> vasárnap</b>
+                <b *ngIf='day == 1'> hétfő</b>
+                </ng-template> -->
+                <b *ngIf='time'> {{ time | date: 'hh:mm a' }} órakor</b> fog futni.
+            </label>
+        </div>
+    </div>
+    <div class='dialog_container_buttons'>
+        <button mat-raised-button color="warn" (click)='onCancel()'>Mégse</button>
+        <button mat-raised-button color="primary" (click)='onSet()'>Beállít</button>
+    </div>
+</div>
