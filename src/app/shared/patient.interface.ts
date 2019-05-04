@@ -8,4 +8,5 @@ export interface Patient {
     bloodOxygen?: number;
     tobaccoUse?: string;
     lungSound?: string;
+    outcome?: string;
 }

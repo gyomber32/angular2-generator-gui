@@ -33,7 +33,8 @@ export class UploadTableComponent implements OnInit, OnChanges, AfterViewInit {
     'bloodGlucose',
     'bloodOxygen',
     'tobaccoUse',
-    'lungSound'];
+    'lungSound',
+    'outcome'];
 
   public applyFilter(filterValue: string) {
     filterValue = filterValue.trim();
@@ -48,12 +49,11 @@ export class UploadTableComponent implements OnInit, OnChanges, AfterViewInit {
   ngOnInit() { }
 
   ngOnChanges() {
-    if (this.patient !== undefined) {
+    /*if (this.patient !== undefined) {
       patients.push(this.patient);
       this.paginator.length += 1;
       this.dataSource._updateChangeSubscription();
-    }
-
+    }*/
   }
 
   ngAfterViewInit() {
@@ -86,7 +86,8 @@ const patients: Patient[] = [
     bloodGlucose: 7.2,
     bloodOxygen: 97,
     tobaccoUse: 'Never used',
-    lungSound: 'Clear'
+    lungSound: 'Clear',
+    outcome: 'Sikeres'
   },
   {
     gender: 'Férfi',
@@ -95,7 +96,8 @@ const patients: Patient[] = [
     weight: 110,
     bloodGlucose: 6.8,
     bloodOxygen: 97,
-    tobaccoUse: 'Never used'
+    tobaccoUse: 'Never used',
+    outcome: 'Sikeres'
   },
   {
     gender: 'Nő',
@@ -105,7 +107,8 @@ const patients: Patient[] = [
     bloodGlucose: 5.3,
     bloodOxygen: 98,
     tobaccoUse: 'Never used',
-    lungSound: 'Clear'
+    lungSound: 'Clear',
+    outcome: 'Sikeres'
   },
   {
     gender: 'Férfi',
@@ -114,7 +117,8 @@ const patients: Patient[] = [
     bloodPressure: '136 / 84',
     bloodGlucose: 6.8,
     bloodOxygen: 97,
-    lungSound: 'Coarse'
+    lungSound: 'Coarse',
+    outcome: 'Sikertelen'
   },
   {
     gender: 'Nő',
@@ -125,7 +129,8 @@ const patients: Patient[] = [
     bloodGlucose: 8.2,
     bloodOxygen: 96,
     tobaccoUse: 'Never used',
-    lungSound: 'Clear'
+    lungSound: 'Clear',
+    outcome: 'Sikeres'
   },
   {
     gender: 'Nő',
@@ -134,6 +139,7 @@ const patients: Patient[] = [
     bloodPressure: '186 / 98',
     bloodGlucose: 8.2,
     tobaccoUse: 'Never used',
-    lungSound: 'Clear'
+    lungSound: 'Clear',
+    outcome: 'Sikertelen'
   }
 ];
