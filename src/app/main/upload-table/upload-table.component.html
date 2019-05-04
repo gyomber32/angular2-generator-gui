@@ -1,70 +1,70 @@
-<div class="table-container mat-elevation-z8">
-  <div class="table-header">
-    <mat-form-field>
-      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Szűrés">
+<div class='table-container mat-elevation-z8'>
+  <div class='table-container_header'>
+    <mat-form-field class='table-container_header_form-filed'>
+      <input matInput (keyup)='applyFilter($event.target.value)' placeholder='Szűrés'>
     </mat-form-field>
   </div>
 
-  <mat-table #table [dataSource]="dataSource">
+  <mat-table class='table-container_table' #table [dataSource]='dataSource'>
 
-    <ng-container matColumnDef="gender">
+    <ng-container matColumnDef='gender'>
       <mat-header-cell *matHeaderCellDef> Nem </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.gender}} </mat-cell>
+      <mat-cell *matCellDef='let element'> {{element.gender}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="age">
+    <ng-container matColumnDef='age'>
       <mat-header-cell *matHeaderCellDef> Kor </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.age}} </mat-cell>
+      <mat-cell *matCellDef='let element'> {{element.age}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="height">
+    <ng-container matColumnDef='height'>
       <mat-header-cell *matHeaderCellDef> Testmagasság </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.height}} </mat-cell>
+      <mat-cell *matCellDef='let element'> {{element.height}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="weight">
+    <ng-container matColumnDef='weight'>
       <mat-header-cell *matHeaderCellDef> Testsúly </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+      <mat-cell *matCellDef='let element'> {{element.weight}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="bloodPressure">
+    <ng-container matColumnDef='bloodPressure'>
       <mat-header-cell *matHeaderCellDef> Vérnyomás </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.bloodPressure}} </mat-cell>
+      <mat-cell *matCellDef='let element'> {{element.bloodPressure}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="bloodGlucose">
+    <ng-container matColumnDef='bloodGlucose'>
       <mat-header-cell *matHeaderCellDef> Vércukorszint </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.bloodGlucose}} </mat-cell>
+      <mat-cell *matCellDef='let element'> {{element.bloodGlucose}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="bloodOxygen">
+    <ng-container matColumnDef='bloodOxygen'>
       <mat-header-cell *matHeaderCellDef> Véroxigénszint</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.bloodOxygen}} </mat-cell>
+      <mat-cell *matCellDef='let element'> {{element.bloodOxygen}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="tobaccoUse">
+    <ng-container matColumnDef='tobaccoUse'>
       <mat-header-cell *matHeaderCellDef> Dohányzás </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.tobaccoUse}} </mat-cell>
+      <mat-cell *matCellDef='let element'> {{element.tobaccoUse}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="lungSound">
+    <ng-container matColumnDef='lungSound'>
       <mat-header-cell *matHeaderCellDef> Tüdőhang </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.lungSound}} </mat-cell>
+      <mat-cell *matCellDef='let element'> {{element.lungSound}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="outcome">
+    <ng-container matColumnDef='outcome'>
       <mat-header-cell *matHeaderCellDef> Kimenetel </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.outcome}} </mat-cell>
+      <mat-cell *matCellDef='let element'> {{element.outcome}} </mat-cell>
     </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    <mat-header-row *matHeaderRowDef='displayedColumns'></mat-header-row>
+    <mat-row *matRowDef='let row; columns: displayedColumns;'></mat-row>
   </mat-table>
 
-  <mat-paginator #paginator [pageSize]="100" [pageSizeOptions]="[5, 10, 20, 50, 100]" [showFirstLastButtons]="true">
+  <mat-paginator #paginator [pageSize]='20' [pageSizeOptions]='[5, 10, 20, 50, 100]' [showFirstLastButtons]='true'>
   </mat-paginator>
 </div>
 
 <div>
-  <button class="back-button" mat-raised-button color="primary" (click)="navigate()">Vissza</button>
+  <button class='back-button' mat-raised-button color='primary' (click)='navigate()'>Vissza</button>
 </div>

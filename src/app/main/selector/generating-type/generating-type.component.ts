@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatRadioChange, MatCheckboxChange } from '@angular/material';
 import { ScheduledGenerationDialog } from './schedule-dialog/scheduled-generation-dialog.component';
 
 import { CommonService } from '../../../services/common.service';
@@ -31,7 +31,7 @@ export class GeneratingTypeComponent implements OnInit {
     }
   ];
 
-  public selectType(event: any): void {
+  public selectType(event: MatRadioChange): void {
     this.typeOfGenerating = event.value;
     if (this.typeOfGenerating === 'Ütemezett adatgenerálás') {
       const dialogRef = this.dialog.open(ScheduledGenerationDialog);
@@ -51,7 +51,7 @@ export class GeneratingTypeComponent implements OnInit {
 
   }
 
-  public setRestEnpoints(event: any): void {
+  public setRestEnpoints(event: MatCheckboxChange): void {
     if (!this.selectedRestEndpoints.includes(event.source.value)) {
       this.selectedRestEndpoints.push(event.source.value);
       this.commonService.updateEndPoints(this.selectedRestEndpoints);

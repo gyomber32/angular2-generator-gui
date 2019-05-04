@@ -1,17 +1,18 @@
-<label class="choose-label">Kérjük válasszon:</label>
+<label class='choose-label'>Kérjük válasszon:</label>
 
 <div class='container'>
-  <mat-radio-group class="radio-group">
-    <mat-radio-button class="radio-button" value='Ütemezett adatgenerálás' (change)='selectType($event)'
-      matTooltip="Az adatok a megadott időben kerülnek továbbküldésre.">Ütemezett adatgenerálás</mat-radio-button>
-    <mat-radio-button class="radio-button" value='Egyszeri adatgenerálás' (change)='selectType($event)'
-      matTooltip="A generált adatok egyben kerülnek továbbküldésre.">Egyszeri
+  <mat-radio-group class='container_radio-group'>
+    <mat-radio-button class='container_radio-group_radio-button' value='Ütemezett adatgenerálás'
+      (change)='selectType($event)' matTooltip='Az adatok a megadott időben kerülnek továbbküldésre.'>Ütemezett
+      adatgenerálás</mat-radio-button>
+    <mat-radio-button class='container_radio-group_radio-button' value='Egyszeri adatgenerálás'
+      (change)='selectType($event)' matTooltip='A generált adatok egyben kerülnek továbbküldésre.'>Egyszeri
       adatgenerálás</mat-radio-button>
   </mat-radio-group>
 
-  <div class="endpoint-container">
-    <label class="endpoint-label"
-      matTooltip="Azon alkalmazások URL-je, ahová a generált adatokat ki szeretné küldeni.">Végpontok:</label>
+  <div class='container_endpoint'>
+    <label class='container_endpoint_label'
+      matTooltip='Azon alkalmazások URL-je, ahová a generált adatokat ki szeretné küldeni.'>Végpontok:</label>
     <div *ngFor=' let rest of restEndpoints'>
       <mat-checkbox [value]='rest.url' (change)='setRestEnpoints($event)'>{{ rest.name }}</mat-checkbox>
     </div>

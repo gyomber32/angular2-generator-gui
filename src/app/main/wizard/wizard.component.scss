@@ -1,17 +1,56 @@
-.wizard_container {
+.wizard-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
   margin: 0.5rem;
   width: 100%;
 
-  .stepper_container {
+  &_stepper {
     width: 60%;
     margin: 5px;
+
+    &_vertical_stepper {
+      border-radius: 4px;
+
+      &_step {
+        &_action-buttons {
+          &_button {
+            margin: 5px;
+          }
+        }
+        &_form {
+          &_checkbox {
+            display: block;
+            padding-bottom: 5px;
+          }
+
+          &_radio-group {
+            &_radio-button {
+              margin: 5px;
+            }
+          }
+        }
+      }
+    }
   }
 
-  .card_container {
+  &_card-container {
     width: 30%;
     margin: 5px;
+
+    &_card {
+      &_card-header {
+        &_image {
+          &_patient-icon {
+            width: 48px;
+            padding: 2px;
+          }
+        }
+
+        &_title {
+          font-weight: bold;
+        }
+      }
+    }
   }
 }

@@ -1,33 +1,28 @@
-.container {
-  padding-top: 5px;
-}
-
-.radio-group {
-  display: inline-flex;
-  flex-direction: column;
-  margin-left: 1rem;
-}
-
-.radio-button {
-  margin: 5px;
-}
-
 .choose-label {
   font-size: 150%;
 }
 
-.endpoint-container {
-  width: 40%;
-  margin-left: 4rem;
-}
+.container {
+  padding-top: 5px;
 
-.endpoint-label {
-  font-size: 100%;
-  font-weight: bold;
-  margin: auto;
-}
+  &_radio-group {
+    display: inline-flex;
+    flex-direction: column;
+    margin-left: 1rem;
 
-.endpoint-input {
-  width: 50%;
-  margin: auto;
+    &_radio-button {
+      margin: 5px;
+    }
+  }
+
+  &_endpoint {
+    width: 40%;
+    margin-left: 4rem;
+
+    &_label {
+      font-size: 100%;
+      font-weight: bold;
+      margin: auto;
+    }
+  }
 }

@@ -36,13 +36,13 @@ export class UploadTableComponent implements OnInit, OnChanges, AfterViewInit {
     'lungSound',
     'outcome'];
 
-  public applyFilter(filterValue: string) {
+  public applyFilter(filterValue: string): void {
     filterValue = filterValue.trim();
     filterValue = filterValue.toLowerCase();
     this.dataSource.filter = filterValue;
   }
 
-  public navigate() {
+  public navigate(): void {
     this.router.navigate(['/selector']);
   }
 

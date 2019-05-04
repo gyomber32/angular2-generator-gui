@@ -4,11 +4,29 @@
   color: white;
 }
 
-.card{
+.card {
   width: 50%;
   margin: auto;
-}
 
-.start-button {
-  float: right;
+  &_content {
+    &_generating-type {
+      height: 150px;
+    }
+
+    &_upload-type {
+      height: 150px;
+      width: 70%;
+      display: inline-block;
+      margin-top: 50px;
+    }
+  }
+
+  &_actions {
+    height: 35px;
+
+    &_start-button {
+      position: relative;
+      float: right;
+    }
+  }
 }

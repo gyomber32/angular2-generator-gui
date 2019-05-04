@@ -1,7 +1,3 @@
-.container {
-  padding-top: 5px;
-}
-
 .upload-label {
   font-size: 150%;
   display: inline;
@@ -10,14 +6,18 @@
   padding: 5px;
 }
 
-.example-radio-group {
-  display: inline-flex;
-  flex-direction: column;
-  top: 15em;
-  margin-left: 1rem;
-}
+.container {
+  padding-top: 5px;
 
-.example-radio-button {
-  margin-top: 5px;
-  margin-left: 20px;
+  &_checkbox-group {
+    display: inline-flex;
+    flex-direction: column;
+    top: 15em;
+    margin-left: 1rem;
+
+    &_checkbox {
+      margin-top: 5px;
+      margin-left: 20px;
+    }
+  }
 }

@@ -201,7 +201,7 @@ export class WizardComponent implements OnInit {
         }
     }
 
-    public reset() {
+    public reset(): void {
         this.firstChecked = false;
         this.secondChecked = false;
         this.thirdChecked = false;
@@ -224,7 +224,7 @@ export class WizardComponent implements OnInit {
         this.lungSound = undefined;
     }
 
-    async getData() {
+    public getData(): void {
         this.commonService.updateAge(this.age);
         this.commonService.updateGender(this.gender);
         this.commonService.updateHeight(this.height);
@@ -244,9 +244,4 @@ export class WizardComponent implements OnInit {
             this.router.navigate(['/upload']);
         }
     }
-}
-
-export class Datepicker {
-    startDate = new Date(1990, 0, 1);
-    endDate = new Date(2018, 12, 31);
 }

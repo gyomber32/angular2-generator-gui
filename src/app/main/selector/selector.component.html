@@ -1,20 +1,18 @@
-<h1 class="title">
+<h1 class='title'>
     Üdvözöljük az adatgeneráló felületen
 </h1>
 
-<mat-card class="card">
-    <mat-card-content>
-        <div style="height: 150px;">
+<mat-card class='card'>
+    <mat-card-content class="card_content">
+        <div class='card_content_generating-type'>
             <app-generating-type></app-generating-type>
         </div>
-        <div style="height: 150px; width: 70%; display: inline-block; margin-top: 50px;">
+        <div class='card_content_upload-type'>
             <app-upload-type></app-upload-type>
         </div>
     </mat-card-content>
-    <mat-card-actions>
-        <button class="start-button" mat-raised-button color="primary" (click)="navigate()"
-            matTooltip="Tovább az adatgenerálás felületre.">Tovább</button>
-        <br>
-        <br>
+    <mat-card-actions class='card_actions'>
+        <button class='card_actions_start-button' mat-raised-button color='primary' (click)='navigate()'
+            matTooltip='Tovább az adatgenerálás felületre.'>Tovább</button>
     </mat-card-actions>
 </mat-card>

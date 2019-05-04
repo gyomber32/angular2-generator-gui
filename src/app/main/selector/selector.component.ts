@@ -13,7 +13,7 @@ export class SelectorComponent implements OnInit {
 
     constructor(private router: Router, private commonService: CommonService) { }
 
-    public navigate() {
+    public navigate(): void {
 
         const typeOfGenerating = this.commonService.getTypeOfGenerating();
         const endPoints = this.commonService.getEndPoints();

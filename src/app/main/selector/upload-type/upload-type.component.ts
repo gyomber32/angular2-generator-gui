@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { CommonService } from '../../../services/common.service';
+import { MatCheckboxChange } from '@angular/material';
 
 @Component({
   selector: 'app-upload-type',
@@ -15,12 +16,12 @@ export class UploadTypeComponent implements OnInit {
 
   constructor(private commonService: CommonService) { }
 
-  public setSaveToFile(event: any): void {
+  public setSaveToFile(event: MatCheckboxChange): void {
     this.saveToFile = event.checked;
     this.commonService.updateSaveToFile(this.saveToFile);
   }
 
-  public setWatching(event: any): void {
+  public setWatching(event: MatCheckboxChange): void {
     this.watching = event.checked;
     this.commonService.updateWatching(this.watching);
   }
