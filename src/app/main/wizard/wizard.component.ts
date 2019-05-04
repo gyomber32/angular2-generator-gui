@@ -1,10 +1,12 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
-import { CommonService } from '../../../services/common.service';
-import { WebsocketService } from '../../../services/websocket.service';
+import { Router } from '@angular/router';
 
-import { Config } from '../../../shared/config.interface';
+import { CommonService } from '../../services/common.service';
+import { WebsocketService } from '../../services/websocket.service';
+
+import { Config } from '../../shared/config.interface';
 
 @Component({
     selector: 'app-wizard',
@@ -56,6 +58,7 @@ export class WizardComponent implements OnInit {
     @Output() patientEmitter = new EventEmitter<PatientInterface>();
 
     constructor(
+        private router: Router,
         private formBuilder: FormBuilder,
         private commonService: CommonService,
         private websocketService: WebsocketService) { }
@@ -238,20 +241,6 @@ export class WizardComponent implements OnInit {
     }
 
     async getData() {
-        console.log('GENERÁLÁS VÉGE!!!');
-        const configJSON = {
-            'gender': this.gender,
-            'age': this.age,
-            'height': this.height,
-            'weight': this.weight,
-            'systolicBloodPressure': this.systolicBloodPressure,
-            'diastolicBloodPressure': this.diastolicBloodPressure,
-            'bloodGlucose': this.bloodGlucose,
-            'bloodOxygen': this.bloodOxygen,
-            'tobaccoUse': this.tobaccoUse,
-            'lungSound': this.lungSound,
-            'quantity': this.quantity
-        };
         this.commonService.updateAge(this.age);
         this.commonService.updateGender(this.gender);
         this.commonService.updateHeight(this.height);
@@ -266,6 +255,10 @@ export class WizardComponent implements OnInit {
         this.commonService.castConfig.subscribe((config: Config) => {
             this.websocketService.sendToServer(config);
         });
+
+        if (this.commonService.getWatching() === true) {
+            this.router.navigate(['/upload']);
+        }
     }
 }
 

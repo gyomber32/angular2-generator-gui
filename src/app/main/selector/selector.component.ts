@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { CommonService } from '../../services/common.service';
+
 @Component({
     selector: 'app-selector',
     templateUrl: './selector.component.html',
@@ -9,18 +11,22 @@ import { Router } from '@angular/router';
 
 export class SelectorComponent implements OnInit {
 
-    constructor(private router: Router) { }
+    constructor(private router: Router, private commonService: CommonService) { }
 
-    navigate() {
+    public navigate() {
 
-        /* This is working and it's necessary, but not here, but also after wizard selected the appropriate SQL queries */
+        const typeOfGenerating = this.commonService.getTypeOfGenerating();
+        const endPoints = this.commonService.getEndPoints();
 
-        /* if( this.uploadType.getSelectedType() == 'Nyomonkövetés' ){
-          this.router.navigate(['/upload-table']);
-        } */
-
-        this.router.navigate(['/generator']);
-
+        if (typeOfGenerating === null) {
+            alert('Továbblépés előtt, kérem állítson be generálási típust!');
+        }
+        if (endPoints.length === 0) {
+            alert('Továbblépés előtt, kérem állítson be legalább egy végpontot!');
+        }
+        if (typeOfGenerating !== null && endPoints.length !== 0) {
+            this.router.navigate(['/wizard']);
+        }
     }
 
     ngOnInit() { }

@@ -1,79 +1,73 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { OnInit } from '@angular/core';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
     selector: 'scheduled-generation-dialog',
     templateUrl: 'scheduled-generation-dialog.component.html',
+    styleUrls: ['./scheduled-generation-dialog.component.scss']
 })
-export class ScheduledGenerationDialog {
+export class ScheduledGenerationDialog implements OnInit {
 
-    public type: string;
-    public time: Date;
-
-    public daysOfWeek = new Array();
+    public now: Date;
+    private dateAndTime: Date;
 
     constructor(public dialogRef: MatDialogRef<ScheduledGenerationDialog>) { }
 
     onNoClick(): void {
-        this.type = null;
-        this.daysOfWeek = null;
-        this.time = null;
-        this.dialogRef.close();
-    }
-
-    change(event: any): void {
-        this.type = event.value;
-        console.log(this.type);
-    }
-
-    addOrRemoveDay(event: any) {
-        if (!this.daysOfWeek.includes(event.source.value)) {
-            this.daysOfWeek.push(event.source.value);
-        } else {
-            const index = this.daysOfWeek.indexOf(event.source.value);
-            this.daysOfWeek.splice(index, 1);
-        }
-        this.daysOfWeek.sort();
+        this.dateAndTime = null;
+        this.dialogRef.close(null);
     }
 
     onCancel(): void {
-        this.type = null;
-        this.daysOfWeek = null;
-        this.time = null;
+        this.dateAndTime = null;
         this.dialogRef.close(null);
     }
 
     onSet(): void {
-        if (this.type === undefined) {
-            alert('Beállítás előtt kérem válasszon generálás típust!');
+        if (this.dateAndTime === undefined) {
+            alert('Beállítás előtt kérem válasszon dátumot és időt!');
         } else {
-            if (this.type === 'hourly') {
-                this.dialogRef.close([this.type]);
-            }
-            if (this.type === 'daily') {
-                if (this.time === undefined) {
-                    alert('Beállítás előtt kérem válasszon időpontot!');
-                } else {
-                    const time = this.getHoursAndMinutes(this.time);
-                    this.dialogRef.close([this.type, time]);
-                }
-            }
-            if (this.type === 'weekly') {
-                if (this.daysOfWeek === undefined || this.time === undefined) {
-                    alert('Beállítás előtt kérem válasszon dátumot és időpontot!');
-                } else {
-                    const time = this.getHoursAndMinutes(this.time);
-                    this.dialogRef.close([this.type, this.daysOfWeek, time]);
-                }
-            }
+            const dateAndTime = this.dateToString(this.dateAndTime);
+            this.dialogRef.close(dateAndTime);
         }
     }
 
-    getHoursAndMinutes(date: Date): string {
+    dateToString(date: Date): string {
+        const yyyy = date.getFullYear();
+        let mm;
+        let dd;
         const hours = date.getHours();
         const minutes = date.getMinutes();
+        if ((date.getMonth() + 1) < 10) {
+            mm = '0' + (date.getMonth() + 1);
+        } else {
+            mm = '' + (date.getMonth() + 1);
+        }
+        if (date.getDate() < 10) {
+            dd = '0' + date.getDate();
+        } else {
+            dd = '' + date.getDate();
+        }
 
-        return hours + ':' + minutes;
+        return yyyy + '-' + mm + '-' + dd + '_' + hours + ':' + minutes;
+    }
+
+    minDateTime(): Date {
+        const now = new Date();
+        const YYYY = now.getFullYear();
+        const MM = now.getMonth();
+        const DD = now.getDate();
+        const hh = now.getHours();
+        const mm = now.getMinutes() + 15;
+
+        return new Date(YYYY, MM, DD, hh, mm);
+    }
+
+    ngOnInit() {
+        this.now = this.minDateTime();
     }
 
 }

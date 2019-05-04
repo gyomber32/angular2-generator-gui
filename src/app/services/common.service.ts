@@ -11,7 +11,25 @@ export class CommonService {
     private configFinale = new BehaviorSubject<Config>(this.config);
 
     // tslint:disable-next-line:no-shadowed-variable
-    constructor(private config: Config) { }
+    constructor(private config: Config) {
+        this.config.age = null;
+        this.config.gender = '';
+        this.config.height = null;
+        this.config.weight = null;
+        this.config.systolicBloodPressure = null;
+        this.config.diastolicBloodPressure = null;
+        this.config.bloodGlucose = null;
+        this.config.bloodOxygen = null;
+        this.config.tobaccoUse = '';
+        this.config.lungSound = '';
+        this.config.quantity = null;
+        this.config.saveToFile = false;
+        this.config.watching = false;
+        this.config.typeOfGenerating = '';
+        this.config.dateAndTime = '';
+        this.config.endPoints = [];
+
+    }
 
     castConfig = this.configFinale.asObservable();
 
@@ -67,8 +85,16 @@ export class CommonService {
         this.config.watching = watching;
     }
 
+    getWatching(): boolean {
+        return this.config.watching;
+    }
+
     updateTypeOfGenerating(typeOfGenerating: string): void {
         this.config.typeOfGenerating = typeOfGenerating;
+    }
+
+    getTypeOfGenerating(): string {
+        return this.config.typeOfGenerating;
     }
 
     updateDateAndTime(dateAndTime: string): void {
@@ -77,5 +103,9 @@ export class CommonService {
 
     updateEndPoints(endPoints: string[]): void {
         this.config.endPoints = endPoints;
+    }
+
+    getEndPoints(): string[] {
+        return this.config.endPoints;
     }
 }

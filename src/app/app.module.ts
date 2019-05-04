@@ -18,14 +18,12 @@ import { Config } from './shared/config.interface';
 import { MasterPageComponent } from './main/master-page.component';
 
 import { SelectorComponent } from './main/selector/selector.component';
-import { GeneratorComponent } from './main/generator/generator.component';
 
 import { GeneratingTypeComponent } from './main/selector/generating-type/generating-type.component';
 import { UploadTypeComponent } from './main/selector/upload-type/upload-type.component';
-import { UploadTableComponent } from './main/generator/upload-table/upload-table.component';
-import { WizardComponent } from './main/generator/wizard/wizard.component';
+import { UploadTableComponent } from './main/upload-table/upload-table.component';
+import { WizardComponent } from './main/wizard/wizard.component';
 
-import { OneTimeGenerationDialog } from './main/selector/generating-type/schedule-dialog/one-time-generation-dialog.component';
 import { ScheduledGenerationDialog } from './main/selector/generating-type/schedule-dialog/scheduled-generation-dialog.component';
 
 /* Material module */
@@ -46,12 +44,10 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     AppComponent,
     MasterPageComponent,
     SelectorComponent,
-    GeneratorComponent,
     GeneratingTypeComponent,
     UploadTypeComponent,
     UploadTableComponent,
     WizardComponent,
-    OneTimeGenerationDialog,
     ScheduledGenerationDialog
   ],
   imports: [
@@ -76,7 +72,6 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     WebsocketService
   ],
   entryComponents: [
-    OneTimeGenerationDialog,
     ScheduledGenerationDialog
   ],
   bootstrap: [AppComponent]

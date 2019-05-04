@@ -16,12 +16,12 @@ export class UploadTypeComponent implements OnInit, OnChanges {
   constructor(private commonService: CommonService) { }
 
   public setSaveToFile(event: any): void {
-    this.saveToFile = event.value;
+    this.saveToFile = event.checked;
     this.commonService.updateSaveToFile(this.saveToFile);
   }
 
   public setWatching(event: any): void {
-    this.watching = event.value;
+    this.watching = event.checked;
     this.commonService.updateWatching(this.watching);
   }
 
