@@ -15,10 +15,7 @@ import { WebsocketService } from './services/websocket.service';
 import { Config } from './shared/config.interface';
 
 /* Components */
-import { MasterPageComponent } from './main/master-page.component';
-
 import { SelectorComponent } from './main/selector/selector.component';
-
 import { GeneratingTypeComponent } from './main/selector/generating-type/generating-type.component';
 import { UploadTypeComponent } from './main/selector/upload-type/upload-type.component';
 import { UploadTableComponent } from './main/upload-table/upload-table.component';
@@ -35,14 +32,12 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 /* Routing modules */
 import { routing } from './app.routes';
 import { Routes, RouterModule } from '@angular/router';
-import { SDKBrowserModule } from './shared/sdk';
 
 const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
 
 @NgModule({
   declarations: [
     AppComponent,
-    MasterPageComponent,
     SelectorComponent,
     GeneratingTypeComponent,
     UploadTypeComponent,
@@ -60,7 +55,6 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     AppMaterialModule,
     BrowserModule,
     HttpClientModule,
-    SDKBrowserModule.forRoot(),
     SocketIoModule.forRoot(config),
     OwlDateTimeModule,
     OwlNativeDateTimeModule

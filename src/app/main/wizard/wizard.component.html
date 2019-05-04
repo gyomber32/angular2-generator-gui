@@ -1,239 +1,275 @@
-<mat-vertical-stepper [linear]="isLinear" #stepper>
-  <mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Nem</ng-template>
-      <mat-checkbox value="true" [(ngModel)]="firstChecked" (change)="onChange()" [ngModelOptions]="{standalone: true}">
-        Szükséges</mat-checkbox>
-      <br>
-      <br>
-      <mat-radio-group [(ngModel)]="gender" [disabled]="!firstChecked" formControlName="firstCtrl">
-        <mat-radio-button value="M">Férfi</mat-radio-button>
-        <mat-radio-button value="F">Nő</mat-radio-button>
-      </mat-radio-group>
-      <br>
-      <br>
-      <div>
-        <button mat-button matStepperPrevious>Előző</button>
-        <button mat-button matStepperNext (click)="onChange()">Következő</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Kor</ng-template>
-      <mat-checkbox value="true" [(ngModel)]="secondChecked" (change)="onChange()"
-        [ngModelOptions]="{standalone: true}">Szükséges</mat-checkbox>
-      <br>
-      <br>
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Kor" type="number" min="1" max="100" [disabled]="!secondChecked" [(ngModel)]="age"
-          formControlName="secondCtrl">
-      </mat-form-field>
-      <br>
-      <br>
-      <div>
-        <button mat-button matStepperPrevious>Előző</button>
-        <button mat-button matStepperNext (click)="onChange()">Következő</button>
-      </div>
-      <br>
-      <br>
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="thirdFormGroup">
-    <form [formGroup]="thirdFormGroup">
-      <ng-template matStepLabel>Testmagasság</ng-template>
-      <mat-checkbox value="true" [(ngModel)]="thirdChecked" (change)="onChange()" [ngModelOptions]="{standalone: true}">
-        Szükséges</mat-checkbox>
-      <br>
-      <br>
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Testmagasság" type="number" [disabled]="!thirdChecked" [(ngModel)]="height"
-          formControlName="thirdCtrl">
-      </mat-form-field>
-      <br>
-      <br>
-      <div>
-        <button mat-button matStepperPrevious>Előző</button>
-        <button mat-button matStepperNext (click)="onChange()">Következő</button>
-      </div>
-      <br>
-      <br>
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="fourthFormGroup">
-    <form [formGroup]="fourthFormGroup">
-      <ng-template matStepLabel>Testsúly</ng-template>
-      <mat-checkbox value="true" [(ngModel)]="fourthChecked" (change)="onChange()"
-        [ngModelOptions]="{standalone: true}">Szükséges</mat-checkbox>
-      <br>
-      <br>
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Testsúly" type="number" [disabled]="!fourthChecked" [(ngModel)]="weight"
-          formControlName="fourthCtrl">
-      </mat-form-field>
-      <br>
-      <br>
-      <div>
-        <button mat-button matStepperPrevious>Előző</button>
-        <button mat-button matStepperNext (click)="onChange()">Következő</button>
-      </div>
-      <br>
-      <br>
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="fifthFormGroup">
-    <form [formGroup]="fifthFormGroup">
-      <ng-template matStepLabel>Vérnyomás</ng-template>
-      <mat-checkbox value="true" [(ngModel)]="fifthChecked" (change)="onChange()" [ngModelOptions]="{standalone: true}">
-        Szükséges</mat-checkbox>
-      <br>
-      <br>
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Szisztolés" type="number" [disabled]="!fifthChecked"
-          [(ngModel)]="systolicBloodPressure" formControlName="systolicCtrl">
-      </mat-form-field>
-      <label>/</label>
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Diasztolés" type="number" [disabled]="!fifthChecked"
-          [(ngModel)]="diastolicBloodPressure" formControlName="diastolicCtrl">
-      </mat-form-field>
-      <br>
-      <br>
-      <div>
-        <button mat-button matStepperPrevious>Előző</button>
-        <button mat-button matStepperNext (click)="onChange()">Következő</button>
-      </div>
-      <br>
-      <br>
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="sixthFormGroup">
-    <form [formGroup]="sixthFormGroup">
-      <ng-template matStepLabel>Vércukor</ng-template>
-      <mat-checkbox value="true" [(ngModel)]="sixthChecked" (change)="onChange()" [ngModelOptions]="{standalone: true}">
-        Szükséges</mat-checkbox>
-      <br>
-      <br>
-      <mat-form-field>
-        <input matInput placeholder="Vércukorszint" type="number" [disabled]="!sixthChecked" [(ngModel)]="bloodGlucose"
-          formControlName="sixthCtrl">
-      </mat-form-field>
-      <br>
-      <br>
-      <div>
-        <button mat-button matStepperPrevious>Előző</button>
-        <button mat-button matStepperNext (click)="onChange()">Következő</button>
-      </div>
-      <br>
-      <br>
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="seventhFormGroup">
-    <form [formGroup]="seventhFormGroup">
-      <ng-template matStepLabel>Véroxigénszint</ng-template>
-      <mat-checkbox value="true" [(ngModel)]="seventhChecked" (change)="onChange()"
-        [ngModelOptions]="{standalone: true}">Szükséges</mat-checkbox>
-      <br>
-      <br>
-      <mat-form-field>
-        <input matInput placeholder="Véroxigénszint" type="number" [disabled]="!seventhChecked"
-          [(ngModel)]="bloodOxygen" formControlName="seventhCtrl">
-      </mat-form-field>
-      <br>
-      <br>
-      <div>
-        <button mat-button matStepperPrevious>Előző</button>
-        <button mat-button matStepperNext (click)="onChange()">Következő</button>
-      </div>
-      <br>
-      <br>
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="eighthFormGroup">
-    <form [formGroup]="eighthFormGroup">
-      <ng-template matStepLabel>Dohányzás</ng-template>
-      <mat-checkbox value="true" [(ngModel)]="eighthChecked" (change)="onChange()"
-        [ngModelOptions]="{standalone: true}">Szükséges</mat-checkbox>
-      <br>
-      <br>
-      <mat-radio-group [(ngModel)]="tobaccoUse" [disabled]="!eighthChecked" formControlName="eighthCtrl">
-        <mat-radio-button value="Never used">Nem doházik</mat-radio-button>
-        <mat-radio-button value="Current use or use within 1 month of admission">Dohányzó</mat-radio-button>
-        <mat-radio-button value="Former user - stopped more than 1 year ago">Leszokott (több mint egy éve)
-        </mat-radio-button>
-        <mat-radio-button value="Stopped more than 1 month ago, but less than 1 year ago">Leszokott (több mint egy
-          hónapja)</mat-radio-button>
-      </mat-radio-group>
-      <br>
-      <br>
-      <div>
-        <button mat-button matStepperPrevious>Előző</button>
-        <button mat-button matStepperNext (click)="onChange()">Következő</button>
-      </div>
-      <br>
-      <br>
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="ninthFormGroup">
-    <form [formGroup]="ninthFormGroup">
-      <ng-template matStepLabel>Tüdőhang</ng-template>
-      <mat-checkbox value="true" [(ngModel)]="ninthChecked" (change)="onChange()" [ngModelOptions]="{standalone: true}">
-        Szükséges</mat-checkbox>
-      <br>
-      <br>
-      <mat-radio-group [(ngModel)]="lungSound" [disabled]="!ninthChecked" formControlName="ninthCtrl">
-        <mat-radio-button value="Bronchial">Hörgő</mat-radio-button>
-        <mat-radio-button value="Exp Wheeze">Kilégzéskor ziháló</mat-radio-button>
-        <mat-radio-button value="Diminished">Gyenge</mat-radio-button>
-        <mat-radio-button value="Crackles">Ropogó</mat-radio-button>
-        <mat-radio-button value="Clear">Tiszta</mat-radio-button>
-        <mat-radio-button value="Absent">Hiányos</mat-radio-button>
-        <mat-radio-button value="Rhonchi">Zajos</mat-radio-button>
-        <mat-radio-button value="Insp Wheeze">Belégzéskor ziháló</mat-radio-button>
-        <mat-radio-button value="Pleural Friction">Pleurális dörzszörej</mat-radio-button>
-        <mat-radio-button value="Coarse">Dúrva</mat-radio-button>
-        <mat-radio-button value="Ins/Exp Wheeze">Be- és kilégzéskor ziháló</mat-radio-button>
-      </mat-radio-group>
-      <br>
-      <br>
-      <div>
-        <button mat-button matStepperPrevious>Előző</button>
-        <button mat-button matStepperNext (click)="onChange()">Következő</button>
-      </div>
-      <br>
-      <br>
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="zeroFormGroup">
-    <form [formGroup]="zeroFormGroup">
-      <ng-template matStepLabel>Mennyiség</ng-template>
-      Mennyiség
-      <br>
-      <br>
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Mennyiség" type="number" [(ngModel)]="quantity" formControlName="zeroCtrl">
-      </mat-form-field>
-      <br>
-      <br>
-      <div>
-        <button mat-button matStepperPrevious>Előző</button>
-        <button mat-button matStepperNext (click)="onChange()">Következő</button>
-      </div>
-      <br>
-      <br>
-    </form>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Vége</ng-template>
-    Indulhat a generálás.
-    <br>
-    <br>
-    <div>
-      <button mat-button matStepperPrevious>Előző</button>
-      <button mat-raised-button color="warn" (click)="stepper.reset()" (click)="reset()">Újra</button>
-      <button mat-raised-button color="primary" (click)="getData()">Generálás</button>
-    </div>
-    <br>
-    <br>
-  </mat-step>
-</mat-vertical-stepper>
+<div class='wizard_container'>
+  <div class='stepper_container'>
+    <mat-vertical-stepper [linear]="isLinear" #stepper>
+      <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+          <ng-template matStepLabel>Nem</ng-template>
+          <mat-checkbox value="true" [(ngModel)]="firstChecked" (change)="onChange()"
+            [ngModelOptions]="{standalone: true}">
+            Szükséges</mat-checkbox>
+          <br>
+          <br>
+          <mat-radio-group [(ngModel)]="gender" [disabled]="!firstChecked" formControlName="firstCtrl">
+            <mat-radio-button value="M">Férfi</mat-radio-button>
+            <mat-radio-button value="F">Nő</mat-radio-button>
+          </mat-radio-group>
+          <br>
+          <br>
+          <div>
+            <button mat-button matStepperPrevious>Előző</button>
+            <button mat-button matStepperNext (click)="onChange()">Következő</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+          <ng-template matStepLabel>Kor</ng-template>
+          <mat-checkbox value="true" [(ngModel)]="secondChecked" (change)="onChange()"
+            [ngModelOptions]="{standalone: true}">Szükséges</mat-checkbox>
+          <br>
+          <br>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Kor" type="number" min="1" max="100" [disabled]="!secondChecked"
+              [(ngModel)]="age" formControlName="secondCtrl">
+          </mat-form-field>
+          <br>
+          <br>
+          <div>
+            <button mat-button matStepperPrevious>Előző</button>
+            <button mat-button matStepperNext (click)="onChange()">Következő</button>
+          </div>
+          <br>
+          <br>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="thirdFormGroup">
+        <form [formGroup]="thirdFormGroup">
+          <ng-template matStepLabel>Testmagasság</ng-template>
+          <mat-checkbox value="true" [(ngModel)]="thirdChecked" (change)="onChange()"
+            [ngModelOptions]="{standalone: true}">
+            Szükséges</mat-checkbox>
+          <br>
+          <br>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Testmagasság" type="number" [disabled]="!thirdChecked" [(ngModel)]="height"
+              formControlName="thirdCtrl">
+          </mat-form-field>
+          <br>
+          <br>
+          <div>
+            <button mat-button matStepperPrevious>Előző</button>
+            <button mat-button matStepperNext (click)="onChange()">Következő</button>
+          </div>
+          <br>
+          <br>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="fourthFormGroup">
+        <form [formGroup]="fourthFormGroup">
+          <ng-template matStepLabel>Testsúly</ng-template>
+          <mat-checkbox value="true" [(ngModel)]="fourthChecked" (change)="onChange()"
+            [ngModelOptions]="{standalone: true}">Szükséges</mat-checkbox>
+          <br>
+          <br>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Testsúly" type="number" [disabled]="!fourthChecked" [(ngModel)]="weight"
+              formControlName="fourthCtrl">
+          </mat-form-field>
+          <br>
+          <br>
+          <div>
+            <button mat-button matStepperPrevious>Előző</button>
+            <button mat-button matStepperNext (click)="onChange()">Következő</button>
+          </div>
+          <br>
+          <br>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="fifthFormGroup">
+        <form [formGroup]="fifthFormGroup">
+          <ng-template matStepLabel>Vérnyomás</ng-template>
+          <mat-checkbox value="true" [(ngModel)]="fifthChecked" (change)="onChange()"
+            [ngModelOptions]="{standalone: true}">
+            Szükséges</mat-checkbox>
+          <br>
+          <br>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Szisztolés" type="number" [disabled]="!fifthChecked"
+              [(ngModel)]="systolicBloodPressure" formControlName="systolicCtrl">
+          </mat-form-field>
+          <label>/</label>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Diasztolés" type="number" [disabled]="!fifthChecked"
+              [(ngModel)]="diastolicBloodPressure" formControlName="diastolicCtrl">
+          </mat-form-field>
+          <br>
+          <br>
+          <div>
+            <button mat-button matStepperPrevious>Előző</button>
+            <button mat-button matStepperNext (click)="onChange()">Következő</button>
+          </div>
+          <br>
+          <br>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="sixthFormGroup">
+        <form [formGroup]="sixthFormGroup">
+          <ng-template matStepLabel>Vércukor</ng-template>
+          <mat-checkbox value="true" [(ngModel)]="sixthChecked" (change)="onChange()"
+            [ngModelOptions]="{standalone: true}">
+            Szükséges</mat-checkbox>
+          <br>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="Vércukorszint" type="number" [disabled]="!sixthChecked"
+              [(ngModel)]="bloodGlucose" formControlName="sixthCtrl">
+          </mat-form-field>
+          <br>
+          <br>
+          <div>
+            <button mat-button matStepperPrevious>Előző</button>
+            <button mat-button matStepperNext (click)="onChange()">Következő</button>
+          </div>
+          <br>
+          <br>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="seventhFormGroup">
+        <form [formGroup]="seventhFormGroup">
+          <ng-template matStepLabel>Véroxigénszint</ng-template>
+          <mat-checkbox value="true" [(ngModel)]="seventhChecked" (change)="onChange()"
+            [ngModelOptions]="{standalone: true}">Szükséges</mat-checkbox>
+          <br>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="Véroxigénszint" type="number" [disabled]="!seventhChecked"
+              [(ngModel)]="bloodOxygen" formControlName="seventhCtrl">
+          </mat-form-field>
+          <br>
+          <br>
+          <div>
+            <button mat-button matStepperPrevious>Előző</button>
+            <button mat-button matStepperNext (click)="onChange()">Következő</button>
+          </div>
+          <br>
+          <br>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="eighthFormGroup">
+        <form [formGroup]="eighthFormGroup">
+          <ng-template matStepLabel>Dohányzás</ng-template>
+          <mat-checkbox value="true" [(ngModel)]="eighthChecked" (change)="onChange()"
+            [ngModelOptions]="{standalone: true}">Szükséges</mat-checkbox>
+          <br>
+          <br>
+          <mat-radio-group [(ngModel)]="tobaccoUse" [disabled]="!eighthChecked" formControlName="eighthCtrl">
+            <mat-radio-button value="Never used">Nem doházik</mat-radio-button>
+            <mat-radio-button value="Current use or use within 1 month of admission">Dohányzó</mat-radio-button>
+            <mat-radio-button value="Former user - stopped more than 1 year ago">Leszokott (több mint egy éve)
+            </mat-radio-button>
+            <mat-radio-button value="Stopped more than 1 month ago, but less than 1 year ago">Leszokott (több mint egy
+              hónapja)</mat-radio-button>
+          </mat-radio-group>
+          <br>
+          <br>
+          <div>
+            <button mat-button matStepperPrevious>Előző</button>
+            <button mat-button matStepperNext (click)="onChange()">Következő</button>
+          </div>
+          <br>
+          <br>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="ninthFormGroup">
+        <form [formGroup]="ninthFormGroup">
+          <ng-template matStepLabel>Tüdőhang</ng-template>
+          <mat-checkbox value="true" [(ngModel)]="ninthChecked" (change)="onChange()"
+            [ngModelOptions]="{standalone: true}">
+            Szükséges</mat-checkbox>
+          <br>
+          <br>
+          <mat-radio-group [(ngModel)]="lungSound" [disabled]="!ninthChecked" formControlName="ninthCtrl">
+            <mat-radio-button value="Bronchial">Hörgő</mat-radio-button>
+            <mat-radio-button value="Exp Wheeze">Kilégzéskor ziháló</mat-radio-button>
+            <mat-radio-button value="Diminished">Gyenge</mat-radio-button>
+            <mat-radio-button value="Crackles">Ropogó</mat-radio-button>
+            <mat-radio-button value="Clear">Tiszta</mat-radio-button>
+            <mat-radio-button value="Absent">Hiányos</mat-radio-button>
+            <mat-radio-button value="Rhonchi">Zajos</mat-radio-button>
+            <mat-radio-button value="Insp Wheeze">Belégzéskor ziháló</mat-radio-button>
+            <mat-radio-button value="Pleural Friction">Pleurális dörzszörej</mat-radio-button>
+            <mat-radio-button value="Coarse">Dúrva</mat-radio-button>
+            <mat-radio-button value="Ins/Exp Wheeze">Be- és kilégzéskor ziháló</mat-radio-button>
+          </mat-radio-group>
+          <br>
+          <br>
+          <div>
+            <button mat-button matStepperPrevious>Előző</button>
+            <button mat-button matStepperNext (click)="onChange()">Következő</button>
+          </div>
+          <br>
+          <br>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="zeroFormGroup">
+        <form [formGroup]="zeroFormGroup">
+          <ng-template matStepLabel>Mennyiség</ng-template>
+          Mennyiség
+          <br>
+          <br>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Mennyiség" type="number" [(ngModel)]="quantity" formControlName="zeroCtrl">
+          </mat-form-field>
+          <br>
+          <br>
+          <div>
+            <button mat-button matStepperPrevious>Előző</button>
+            <button mat-button matStepperNext (click)="onChange()">Következő</button>
+          </div>
+          <br>
+          <br>
+        </form>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Vége</ng-template>
+        Indulhat a generálás.
+        <br>
+        <br>
+        <div>
+          <button mat-button matStepperPrevious>Előző</button>
+          <button mat-raised-button color="warn" (click)="stepper.reset()" (click)="reset()">Újra</button>
+          <button mat-raised-button color="primary" (click)="getData()">Generálás</button>
+        </div>
+        <br>
+        <br>
+      </mat-step>
+    </mat-vertical-stepper>
+  </div>
+
+  <div class='card_container'>
+    <mat-card>
+      <mat-card-header>
+        <div mat-card-avatar>
+          <img style='width:48px; padding: 2px;' src='../../../assets/patient.svg'>
+        </div>
+        <mat-card-title style='font-weight: bold;'>Páciens</mat-card-title>
+        <mat-card-title>kórlap</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list role="list">
+          <mat-list-item role="listitem" *ngIf='gender'>Nem: {{ gender }}</mat-list-item>
+          <mat-list-item role="listitem" *ngIf='age'>Kor: {{ age }}</mat-list-item>
+          <mat-list-item role="listitem" *ngIf='height'>Testmagasság: {{ height }} cm</mat-list-item>
+          <mat-list-item role="listitem" *ngIf='weight'>Testsúly: {{ weight }} kg</mat-list-item>
+          <mat-list-item role="listitem" *ngIf='systolicBloodPressure && diastolicBloodPressure'>Vérnyomás:
+            {{ systolicBloodPressure }} / {{ diastolicBloodPressure }} Hgmm
+          </mat-list-item>
+          <mat-list-item role="listitem" *ngIf='bloodGlucose'>Vércukor: {{ bloodGlucose }} mmol/l</mat-list-item>
+          <mat-list-item role="listitem" *ngIf='bloodOxygen'>Véroxygénszint: {{ bloodOxygen }} %</mat-list-item>
+          <mat-list-item role="listitem" *ngIf='tobaccoUse'>Dohányzás: {{ tobaccoUse }}</mat-list-item>
+          <mat-list-item role="listitem" *ngIf='lungSound'>Tüdőhang: {{ lungSound }}</mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

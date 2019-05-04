@@ -11,7 +11,7 @@ import { Config } from '../../shared/config.interface';
 @Component({
     selector: 'app-wizard',
     templateUrl: './wizard.component.html',
-    styleUrls: ['./wizard.component.css'],
+    styleUrls: ['./wizard.component.scss'],
 })
 export class WizardComponent implements OnInit {
 
@@ -126,20 +126,7 @@ export class WizardComponent implements OnInit {
         this.websocketService.getFromServer();
     }
 
-    public onChange() {
-        console.log('******************');
-        console.log('quantity: ' + this.quantity);
-        console.log('gender: ' + this.gender);
-        console.log('age: ' + this.age);
-        console.log('height: ' + this.height);
-        console.log('weight: ' + this.weight);
-        console.log('vérnyomás: ' + this.systolicBloodPressure + '/' + this.diastolicBloodPressure);
-        console.log('vércukor: ' + this.bloodGlucose);
-        console.log('véroxigén: ' + this.bloodOxygen);
-        console.log('tobaccoUse: ' + this.tobaccoUse);
-        console.log('tüdőhang: ' + this.lungSound);
-        console.log('******************');
-
+    public onChange(): void {
         this.firstFormGroup = this.formBuilder.group({
             firstCtrl: [{ value: this.gender, disabled: !(this.firstChecked) }, Validators.required]
         });
