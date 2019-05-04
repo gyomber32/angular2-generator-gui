@@ -12,7 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 export class ScheduledGenerationDialog implements OnInit {
 
     public now: Date;
-    private dateAndTime: Date;
+    public dateAndTime: Date;
 
     constructor(public dialogRef: MatDialogRef<ScheduledGenerationDialog>) { }
 

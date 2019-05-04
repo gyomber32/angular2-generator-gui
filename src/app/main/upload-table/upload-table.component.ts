@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-upload-table',
   templateUrl: './upload-table.component.html',
-  styleUrls: ['./upload-table.component.css'],
+  styleUrls: ['./upload-table.component.scss'],
   providers: [{
     provide: MatPaginatorIntl,
     useClass: forwardRef(() => MatPaginatorIntlUnique)

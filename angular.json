@@ -28,7 +28,7 @@
               }
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -138,8 +138,8 @@
   "cli": {},
   "schematics": {
     "@schematics/angular:component": {
-      "prefix": "app",
-      "styleext": "css"
+      "prefix": "",
+      "styleext": "scss"
     },
     "@schematics/angular:directive": {
       "prefix": "app"

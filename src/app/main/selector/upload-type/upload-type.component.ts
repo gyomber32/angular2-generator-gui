@@ -5,7 +5,7 @@ import { CommonService } from '../../../services/common.service';
 @Component({
   selector: 'app-upload-type',
   templateUrl: './upload-type.component.html',
-  styleUrls: ['./upload-type.component.css']
+  styleUrls: ['./upload-type.component.scss']
 })
 
 export class UploadTypeComponent implements OnInit, OnChanges {

@@ -29,29 +29,29 @@ export class WizardComponent implements OnInit {
 
     rateControl: FormControl;
 
-    private zeroChecked = false;
-    private firstChecked = false;
-    private secondChecked = false;
-    private thirdChecked = false;
-    private fourthChecked = false;
-    private fifthChecked = false;
-    private sixthChecked = false;
-    private seventhChecked = false;
-    private eighthChecked = false;
-    private ninthChecked = false;
+    public zeroChecked = false;
+    public firstChecked = false;
+    public secondChecked = false;
+    public thirdChecked = false;
+    public fourthChecked = false;
+    public fifthChecked = false;
+    public sixthChecked = false;
+    public seventhChecked = false;
+    public eighthChecked = false;
+    public ninthChecked = false;
 
-    private quantity: number;
+    public quantity: number;
 
-    private gender: string;
-    private age: number;
-    private height: number;
-    private weight: number;
-    private systolicBloodPressure: number;
-    private diastolicBloodPressure: number;
-    private bloodGlucose: number;
-    private bloodOxygen: number;
-    private tobaccoUse: string;
-    private lungSound: string;
+    public gender: string;
+    public age: number;
+    public height: number;
+    public weight: number;
+    public systolicBloodPressure: number;
+    public diastolicBloodPressure: number;
+    public bloodGlucose: number;
+    public bloodOxygen: number;
+    public tobaccoUse: string;
+    public lungSound: string;
 
     private patient: PatientInterface;
 

@@ -7,13 +7,17 @@ import { CommonService } from '../../../services/common.service';
 @Component({
   selector: 'app-generating-type',
   templateUrl: './generating-type.component.html',
-  styleUrls: ['./generating-type.component.css']
+  styleUrls: ['./generating-type.component.scss']
 })
 export class GeneratingTypeComponent implements OnInit {
 
   constructor(public dialog: MatDialog, private commonService: CommonService) { }
 
-  private restEndpoints = [
+  private selectedRestEndpoints = new Array<string>();
+  private dateAndTime: string;
+  private visibility = false;
+  public typeOfGenerating: string;
+  public restEndpoints = [
     {
       name: 'endPoint1',
       url: 'http://endPoint1'
@@ -27,11 +31,6 @@ export class GeneratingTypeComponent implements OnInit {
       url: 'http://endPoint3'
     }
   ];
-
-  private selectedRestEndpoints = new Array<string>();
-  private visibility = false;
-  private typeOfGenerating: string;
-  private dateAndTime: string;
 
   public selectType(event: any): void {
     this.typeOfGenerating = event.value;
