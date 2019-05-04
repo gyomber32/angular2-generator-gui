@@ -1,7 +1,7 @@
 <label class="choose-label">Kérjük válasszon:</label>
 
 <div class='container'>
-  <mat-radio-group class="radio-group" [(ngModel)]="typeOfGenerating">
+  <mat-radio-group class="radio-group">
     <mat-radio-button class="radio-button" value='Ütemezett adatgenerálás' (change)='selectType($event)'
       matTooltip="Az adatok a megadott időben kerülnek továbbküldésre.">Ütemezett adatgenerálás</mat-radio-button>
     <mat-radio-button class="radio-button" value='Egyszeri adatgenerálás' (change)='selectType($event)'

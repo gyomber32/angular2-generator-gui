@@ -1,7 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { BehaviorSubject, config } from 'rxjs';
 
-import { Config } from '../shared/config.interface';
+import { Config } from '../shared/config';
 
 @Injectable({
     providedIn: 'root'

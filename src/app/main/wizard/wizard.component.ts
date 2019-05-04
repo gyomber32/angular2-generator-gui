@@ -1,12 +1,13 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Router } from '@angular/router';
 
 import { CommonService } from '../../services/common.service';
 import { WebsocketService } from '../../services/websocket.service';
 
-import { Config } from '../../shared/config.interface';
+import { Config } from '../../shared/config';
+import { Patient } from '../../shared/patient.interface';
 
 @Component({
     selector: 'app-wizard',
@@ -15,19 +16,17 @@ import { Config } from '../../shared/config.interface';
 })
 export class WizardComponent implements OnInit {
 
-    isLinear = true;
-    zeroFormGroup: FormGroup;
-    firstFormGroup: FormGroup;
-    secondFormGroup: FormGroup;
-    thirdFormGroup: FormGroup;
-    fourthFormGroup: FormGroup;
-    fifthFormGroup: FormGroup;
-    sixthFormGroup: FormGroup;
-    seventhFormGroup: FormGroup;
-    eighthFormGroup: FormGroup;
-    ninthFormGroup: FormGroup;
-
-    rateControl: FormControl;
+    public isLinear = true;
+    public zeroFormGroup: FormGroup;
+    public firstFormGroup: FormGroup;
+    public secondFormGroup: FormGroup;
+    public thirdFormGroup: FormGroup;
+    public fourthFormGroup: FormGroup;
+    public fifthFormGroup: FormGroup;
+    public sixthFormGroup: FormGroup;
+    public seventhFormGroup: FormGroup;
+    public eighthFormGroup: FormGroup;
+    public ninthFormGroup: FormGroup;
 
     public zeroChecked = false;
     public firstChecked = false;
@@ -53,9 +52,7 @@ export class WizardComponent implements OnInit {
     public tobaccoUse: string;
     public lungSound: string;
 
-    private patient: PatientInterface;
-
-    @Output() patientEmitter = new EventEmitter<PatientInterface>();
+    @Output() patientEmitter = new EventEmitter<Patient>();
 
     constructor(
         private router: Router,
@@ -247,18 +244,6 @@ export class WizardComponent implements OnInit {
             this.router.navigate(['/upload']);
         }
     }
-}
-
-export interface PatientInterface {
-    gender?: string;
-    age?: number;
-    height?: number;
-    weight?: number;
-    bloodPressure?: string;
-    bloodGlucose?: number;
-    bloodOxygen?: number;
-    tobaccoUse?: string;
-    lungSound?: string;
 }
 
 export class Datepicker {

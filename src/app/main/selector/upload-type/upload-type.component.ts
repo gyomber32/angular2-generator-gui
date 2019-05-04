@@ -1,4 +1,4 @@
-import { Component, OnInit, Injectable, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { CommonService } from '../../../services/common.service';
 
@@ -8,7 +8,7 @@ import { CommonService } from '../../../services/common.service';
   styleUrls: ['./upload-type.component.scss']
 })
 
-export class UploadTypeComponent implements OnInit, OnChanges {
+export class UploadTypeComponent implements OnInit {
 
   public saveToFile = false;
   public watching = false;
@@ -26,10 +26,5 @@ export class UploadTypeComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() { }
-
-  ngOnChanges() {
-    console.log(this.saveToFile);
-    console.log(this.watching);
-  }
 
 }

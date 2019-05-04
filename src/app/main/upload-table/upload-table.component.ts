@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewChild, Injectable, forwardRef, Input, ChangeDetectorRef, OnChanges, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, Injectable, forwardRef, Input, OnChanges, AfterViewInit } from '@angular/core';
 import { MatPaginator, MatTableDataSource, MatPaginatorIntl } from '@angular/material';
-import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { Router } from '@angular/router';
+
+import { Patient } from '../../shared/patient.interface';
 
 @Component({
   selector: 'app-upload-table',
@@ -16,29 +17,37 @@ import { Router } from '@angular/router';
 
 export class UploadTableComponent implements OnInit, OnChanges, AfterViewInit {
 
-  @Input() patient: PatientInterface;
+  @Input() patient: Patient;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private router: Router, private changeDetectorRefs: ChangeDetectorRef) { }
+  constructor(private router: Router) { }
 
-  displayedColumns = ['gender', 'age', 'height', 'weight', 'bloodPressure', 'bloodGlucose', 'bloodOxygen', 'tobaccoUse', 'lungSound'];
-  dataSource = new MatTableDataSource(patients);
+  public dataSource = new MatTableDataSource(patients);
+  public displayedColumns = [
+    'gender',
+    'age',
+    'height',
+    'weight',
+    'bloodPressure',
+    'bloodGlucose',
+    'bloodOxygen',
+    'tobaccoUse',
+    'lungSound'];
 
-  applyFilter(filterValue: string) {
-    filterValue = filterValue.trim(); // Remove whitespace
-    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+  public applyFilter(filterValue: string) {
+    filterValue = filterValue.trim();
+    filterValue = filterValue.toLowerCase();
     this.dataSource.filter = filterValue;
   }
 
-  navigate() {
-    this.router.navigate(['/master-page']);
+  public navigate() {
+    this.router.navigate(['/selector']);
   }
 
   ngOnInit() { }
 
   ngOnChanges() {
-    console.log('patient in UploadTable: ', this.patient);
     if (this.patient !== undefined) {
       patients.push(this.patient);
       this.paginator.length += 1;
@@ -47,10 +56,6 @@ export class UploadTableComponent implements OnInit, OnChanges, AfterViewInit {
 
   }
 
-  /**
-   * Set the paginator after the view init since this component will
-   * be able to query its view for the initialized paginator.
-   */
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
@@ -71,19 +76,7 @@ export class MatPaginatorIntlUnique extends MatPaginatorIntl {
   }
 }
 
-export interface PatientInterface {
-  gender?: string;
-  age?: number;
-  height?: number;
-  weight?: number;
-  bloodPressure?: string;
-  bloodGlucose?: number;
-  bloodOxygen?: number;
-  tobaccoUse?: string;
-  lungSound?: string;
-}
-
-const patients: PatientInterface[] = [
+const patients: Patient[] = [
   {
     gender: 'Nő',
     age: 25,

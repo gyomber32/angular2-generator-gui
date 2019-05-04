@@ -6,13 +6,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 
-import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+/* Material module */
+import { AppMaterialModule } from './app.material.module';
 
-/* Services */
-import { CommonService } from './services/common.service';
-import { WebsocketService } from './services/websocket.service';
-
-import { Config } from './shared/config.interface';
+/* Routing modules */
+import { routing } from './app.routes';
 
 /* Components */
 import { SelectorComponent } from './main/selector/selector.component';
@@ -21,17 +19,21 @@ import { UploadTypeComponent } from './main/selector/upload-type/upload-type.com
 import { UploadTableComponent } from './main/upload-table/upload-table.component';
 import { WizardComponent } from './main/wizard/wizard.component';
 
+/* Dialog components */
 import { ScheduledGenerationDialog } from './main/selector/generating-type/schedule-dialog/scheduled-generation-dialog.component';
 
-/* Material module */
-import { AppMaterialModule } from './app.material.module';
+/* Services */
+import { CommonService } from './services/common.service';
+import { WebsocketService } from './services/websocket.service';
+
+/* Interfaces, Classes */
+import { Config } from './shared/config';
+
+/* Webscoket module */
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+
 /* Timepicker module */
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
-
-
-/* Routing modules */
-import { routing } from './app.routes';
-import { Routes, RouterModule } from '@angular/router';
 
 const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
 

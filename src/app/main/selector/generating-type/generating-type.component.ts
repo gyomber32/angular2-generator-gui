@@ -1,5 +1,5 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
 import { ScheduledGenerationDialog } from './schedule-dialog/scheduled-generation-dialog.component';
 
 import { CommonService } from '../../../services/common.service';
@@ -15,7 +15,6 @@ export class GeneratingTypeComponent implements OnInit {
 
   private selectedRestEndpoints = new Array<string>();
   private dateAndTime: string;
-  private visibility = false;
   public typeOfGenerating: string;
   public restEndpoints = [
     {
@@ -34,13 +33,10 @@ export class GeneratingTypeComponent implements OnInit {
 
   public selectType(event: any): void {
     this.typeOfGenerating = event.value;
-    console.log(this.typeOfGenerating);
     if (this.typeOfGenerating === 'Ütemezett adatgenerálás') {
       const dialogRef = this.dialog.open(ScheduledGenerationDialog);
 
       dialogRef.afterClosed().subscribe((result: string) => {
-        console.log('The Scheduled Generation Dialog was closed');
-        console.log(result);
         this.dateAndTime = null;
         this.dateAndTime = result;
         this.commonService.updateTypeOfGenerating(this.typeOfGenerating);
