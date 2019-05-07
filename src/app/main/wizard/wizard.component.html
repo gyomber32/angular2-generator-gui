@@ -16,8 +16,6 @@
           </mat-radio-group>
           <div class='wizard-container_stepper_vertical_stepper_step_action-buttons'>
             <button class='wizard-container_stepper_vertical_stepper_step_action-buttons_button' mat-raised-button
-              matStepperPrevious>Előző</button>
-            <button class='wizard-container_stepper_vertical_stepper_step_action-buttons_button' mat-raised-button
               matStepperNext (click)='onChange()'>Következő</button>
           </div>
         </form>
@@ -223,7 +221,7 @@
           <button class='wizard-container_stepper_vertical_stepper_step_action-buttons_button' mat-raised-button
             color='warn' (click)='stepper.reset()' (click)='reset()'>Újra</button>
           <button class='wizard-container_stepper_vertical_stepper_step_action-buttons_button' mat-raised-button
-            color='primary' (click)='getData()'>Generálás</button>
+            color='primary' (click)='generate()'>Generálás</button>
         </div>
       </mat-step>
     </mat-vertical-stepper>

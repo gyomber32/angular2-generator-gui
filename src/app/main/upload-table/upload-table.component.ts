@@ -3,7 +3,11 @@ import { MatPaginator, MatTableDataSource, MatPaginatorIntl } from '@angular/mat
 
 import { Router } from '@angular/router';
 
+import { Socket } from 'ngx-socket-io';
+
 import { Patient } from '../../shared/patient.interface';
+import { CommonService } from '../../services/common.service';
+import { WebsocketService } from '../../services/websocket.service';
 
 @Component({
   selector: 'app-upload-table',
@@ -21,7 +25,7 @@ export class UploadTableComponent implements OnInit, OnChanges, AfterViewInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private websocketService: WebsocketService, private socket: Socket) { }
 
   public dataSource = new MatTableDataSource(patients);
   public displayedColumns = [
@@ -46,14 +50,35 @@ export class UploadTableComponent implements OnInit, OnChanges, AfterViewInit {
     this.router.navigate(['/selector']);
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    /* Once you have to call it */
+    console.log('onInit()');
+    this.socket.fromEvent('data').subscribe((patient: Patient) => {
+      console.log(patient);
+      if (patient !== undefined) {
+        patients.push(patient);
+        this.paginator.length += 1;
+        this.dataSource._updateChangeSubscription();
+      }
+    });
+  }
 
   ngOnChanges() {
-    /*if (this.patient !== undefined) {
-      patients.push(this.patient);
+    console.log('onChanges()');
+    this.socket.fromEvent('data').subscribe((patient: Patient) => {
+      console.log(patient);
+      if (patient !== undefined) {
+        patients.push(patient);
+        this.paginator.length += 1;
+        this.dataSource._updateChangeSubscription();
+      }
+    });
+    /*this.websocketService.castPatient.subscribe((patient: Patient) => {
+      console.log(patient);
+      patients.push(patient);
       this.paginator.length += 1;
       this.dataSource._updateChangeSubscription();
-    }*/
+    });*/
   }
 
   ngAfterViewInit() {
@@ -77,7 +102,7 @@ export class MatPaginatorIntlUnique extends MatPaginatorIntl {
 }
 
 const patients: Patient[] = [
-  {
+  /*{
     gender: 'Nő',
     age: 25,
     height: 175,
@@ -141,5 +166,5 @@ const patients: Patient[] = [
     tobaccoUse: 'Never used',
     lungSound: 'Clear',
     outcome: 'Sikertelen'
-  }
+  }*/
 ];

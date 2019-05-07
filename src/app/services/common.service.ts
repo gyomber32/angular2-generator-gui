@@ -1,5 +1,5 @@
-import { Injectable, EventEmitter } from '@angular/core';
-import { BehaviorSubject, config } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 import { Config } from '../shared/config';
 
@@ -28,7 +28,6 @@ export class CommonService {
         this.config.typeOfGenerating = '';
         this.config.dateAndTime = '';
         this.config.endPoints = [];
-
     }
 
     castConfig = this.configFinale.asObservable();

@@ -120,7 +120,6 @@ export class WizardComponent implements OnInit {
                 '', Validators.compose([Validators.min(1), Validators.required])
             ]
         });
-        this.websocketService.getFromServer();
     }
 
     public onChange(): void {
@@ -224,7 +223,7 @@ export class WizardComponent implements OnInit {
         this.lungSound = undefined;
     }
 
-    public getData(): void {
+    public generate(): void {
         this.commonService.updateAge(this.age);
         this.commonService.updateGender(this.gender);
         this.commonService.updateHeight(this.height);
