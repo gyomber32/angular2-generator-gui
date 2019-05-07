@@ -6,8 +6,6 @@ import { Router } from '@angular/router';
 import { Socket } from 'ngx-socket-io';
 
 import { Patient } from '../../shared/patient.interface';
-import { CommonService } from '../../services/common.service';
-import { WebsocketService } from '../../services/websocket.service';
 
 @Component({
   selector: 'app-upload-table',
@@ -25,7 +23,7 @@ export class UploadTableComponent implements OnInit, OnChanges, AfterViewInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private router: Router, private websocketService: WebsocketService, private socket: Socket) { }
+  constructor(private router: Router, private socket: Socket) { }
 
   public dataSource = new MatTableDataSource(patients);
   public displayedColumns = [

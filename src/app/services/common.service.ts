@@ -26,7 +26,7 @@ export class CommonService {
         this.config.saveToFile = false;
         this.config.watching = false;
         this.config.typeOfGenerating = '';
-        this.config.dateAndTime = '';
+        this.config.dateAndTime = [];
         this.config.endPoints = [];
     }
 
@@ -96,7 +96,7 @@ export class CommonService {
         return this.config.typeOfGenerating;
     }
 
-    updateDateAndTime(dateAndTime: string): void {
+    updateDateAndTime(dateAndTime: number[]): void {
         this.config.dateAndTime = dateAndTime;
     }
 

@@ -28,29 +28,21 @@ export class ScheduledGenerationDialog implements OnInit {
         if (this.dateAndTime === undefined) {
             alert('Beállítás előtt kérem válasszon dátumot és időt!');
         } else {
-            const dateAndTime = this.dateToString(this.dateAndTime);
+            const dateAndTime = this.dateToDateArray(this.dateAndTime);
             this.dialogRef.close(dateAndTime);
         }
     }
 
-    public dateToString(date: Date): string {
-        const yyyy = date.getFullYear();
-        let mm: string;
-        let dd: string;
-        const hours = date.getHours();
-        const minutes = date.getMinutes();
-        if ((date.getMonth() + 1) < 10) {
-            mm = '0' + (date.getMonth() + 1);
-        } else {
-            mm = '' + (date.getMonth() + 1);
-        }
-        if (date.getDate() < 10) {
-            dd = '0' + date.getDate();
-        } else {
-            dd = '' + date.getDate();
-        }
+    public dateToDateArray(date: Date): number[] {
 
-        return yyyy + '-' + mm + '-' + dd + '_' + hours + ':' + minutes;
+        const dateArray = new Array<number>();
+        dateArray.push(date.getFullYear());
+        dateArray.push(date.getMonth());
+        dateArray.push(date.getDate());
+        dateArray.push(date.getHours());
+        dateArray.push(date.getMinutes());
+
+        return dateArray;
     }
 
     public minDateTime(): Date {

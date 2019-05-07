@@ -24,13 +24,15 @@ import { ScheduledGenerationDialog } from './main/selector/generating-type/sched
 
 /* Services */
 import { CommonService } from './services/common.service';
-import { WebsocketService } from './services/websocket.service';
 
 /* Interfaces, Classes */
 import { Config } from './shared/config';
 
 /* Webscoket module */
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+
+/* Pipes */
+import { EngToHunPipe } from './shared/eng-to-hun.pipe';
 
 /* Timepicker module */
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
@@ -45,7 +47,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     UploadTypeComponent,
     UploadTableComponent,
     WizardComponent,
-    ScheduledGenerationDialog
+    ScheduledGenerationDialog,
+    EngToHunPipe
   ],
   imports: [
     BrowserModule,
@@ -64,8 +67,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
   providers: [
     UploadTypeComponent,
     Config,
-    CommonService,
-    WebsocketService
+    CommonService
   ],
   entryComponents: [
     ScheduledGenerationDialog

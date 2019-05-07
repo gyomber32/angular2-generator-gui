@@ -14,7 +14,7 @@ export class GeneratingTypeComponent implements OnInit {
   constructor(public dialog: MatDialog, private commonService: CommonService) { }
 
   private selectedRestEndpoints = new Array<string>();
-  private dateAndTime: string;
+  private dateAndTime: number[];
   public typeOfGenerating: string;
   public restEndpoints = [
     {
@@ -36,7 +36,7 @@ export class GeneratingTypeComponent implements OnInit {
     if (this.typeOfGenerating === 'Ütemezett adatgenerálás') {
       const dialogRef = this.dialog.open(ScheduledGenerationDialog);
 
-      dialogRef.afterClosed().subscribe((result: string) => {
+      dialogRef.afterClosed().subscribe((result: number[]) => {
         this.dateAndTime = null;
         this.dateAndTime = result;
         this.commonService.updateTypeOfGenerating(this.typeOfGenerating);

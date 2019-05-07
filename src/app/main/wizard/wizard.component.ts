@@ -4,7 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { CommonService } from '../../services/common.service';
-import { WebsocketService } from '../../services/websocket.service';
+
+import { Socket } from 'ngx-socket-io';
 
 import { Config } from '../../shared/config';
 import { Patient } from '../../shared/patient.interface';
@@ -58,7 +59,7 @@ export class WizardComponent implements OnInit {
         private router: Router,
         private formBuilder: FormBuilder,
         private commonService: CommonService,
-        private websocketService: WebsocketService) { }
+        private socket: Socket) { }
 
     ngOnInit() {
         this.firstFormGroup = this.formBuilder.group({
@@ -236,7 +237,7 @@ export class WizardComponent implements OnInit {
         this.commonService.updateLungSound(this.lungSound);
         this.commonService.updateQuantity(this.quantity);
         this.commonService.castConfig.subscribe((config: Config) => {
-            this.websocketService.sendToServer(config);
+            this.socket.emit('config', config);
         });
 
         if (this.commonService.getWatching() === true) {

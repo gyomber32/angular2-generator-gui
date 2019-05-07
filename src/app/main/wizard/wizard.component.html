@@ -239,7 +239,7 @@
       </mat-card-header>
       <mat-card-content>
         <mat-list role='list'>
-          <mat-list-item role='listitem' *ngIf='gender'>Nem: {{ gender }}</mat-list-item>
+          <mat-list-item role='listitem' *ngIf='gender'>Nem: {{ gender | engtohun }}</mat-list-item>
           <mat-list-item role='listitem' *ngIf='age'>Kor: {{ age }}</mat-list-item>
           <mat-list-item role='listitem' *ngIf='height'>Testmagasság: {{ height }} cm</mat-list-item>
           <mat-list-item role='listitem' *ngIf='weight'>Testsúly: {{ weight }} kg</mat-list-item>
@@ -248,8 +248,8 @@
           </mat-list-item>
           <mat-list-item role='listitem' *ngIf='bloodGlucose'>Vércukor: {{ bloodGlucose }} mmol/l</mat-list-item>
           <mat-list-item role='listitem' *ngIf='bloodOxygen'>Véroxygénszint: {{ bloodOxygen }} %</mat-list-item>
-          <mat-list-item role='listitem' *ngIf='tobaccoUse'>Dohányzás: {{ tobaccoUse }}</mat-list-item>
-          <mat-list-item role='listitem' *ngIf='lungSound'>Tüdőhang: {{ lungSound }}</mat-list-item>
+          <mat-list-item role='listitem' *ngIf='tobaccoUse'>Dohányzás: {{ tobaccoUse | engtohun }}</mat-list-item>
+          <mat-list-item role='listitem' *ngIf='lungSound'>Tüdőhang: {{ lungSound | engtohun }}</mat-list-item>
         </mat-list>
       </mat-card-content>
     </mat-card>

@@ -13,6 +13,6 @@ export class Config {
     saveToFile: boolean;
     watching: boolean;
     typeOfGenerating: string;
-    dateAndTime: string;
+    dateAndTime: number[];
     endPoints: string[];
 }
