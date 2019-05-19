@@ -10,7 +10,6 @@ export class CommonService {
 
     private configFinale = new BehaviorSubject<Config>(this.config);
 
-    // tslint:disable-next-line:no-shadowed-variable
     constructor(private config: Config) {
         this.config.age = null;
         this.config.gender = '';

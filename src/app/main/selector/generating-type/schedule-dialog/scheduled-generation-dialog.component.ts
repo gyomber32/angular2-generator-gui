@@ -3,7 +3,7 @@ import { MatDialogRef } from '@angular/material';
 import { OnInit } from '@angular/core';
 
 @Component({
-    selector: 'scheduled-generation-dialog',
+    selector: 'app-scheduled-generation-dialog',
     templateUrl: 'scheduled-generation-dialog.component.html',
     styleUrls: ['./scheduled-generation-dialog.component.scss']
 })
