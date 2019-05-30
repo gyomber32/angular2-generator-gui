@@ -19,15 +19,15 @@ export class GeneratingTypeComponent implements OnInit {
   public restEndpoints = [
     {
       name: 'endPoint1',
-      url: 'http://endPoint1'
+      url: 'http://localhost:8000/postPatient1'
     },
     {
       name: 'endPoint2',
-      url: 'http://endPoint2'
+      url: 'http://localhost:8000/postPatient2'
     },
     {
       name: 'endPoint3',
-      url: 'http://endPoint3'
+      url: 'http://localhost:8000/postPatient3'
     }
   ];
 
@@ -54,12 +54,11 @@ export class GeneratingTypeComponent implements OnInit {
   public setRestEnpoints(event: MatCheckboxChange): void {
     if (!this.selectedRestEndpoints.includes(event.source.value)) {
       this.selectedRestEndpoints.push(event.source.value);
-      this.commonService.updateEndPoints(this.selectedRestEndpoints);
     } else {
       const index = this.selectedRestEndpoints.indexOf(event.source.value);
       this.selectedRestEndpoints.splice(index, 1);
-      this.commonService.updateEndPoints(this.selectedRestEndpoints);
     }
+    this.commonService.updateEndPoints(this.selectedRestEndpoints);
   }
 
   ngOnInit() { }

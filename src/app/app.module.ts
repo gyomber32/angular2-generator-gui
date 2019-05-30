@@ -37,7 +37,7 @@ import { EngToHunPipe } from './shared/eng-to-hun.pipe';
 /* Timepicker module */
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
-const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
+const config: SocketIoConfig = { url: 'http://localhost:3001', options: { } };
 
 @NgModule({
   declarations: [

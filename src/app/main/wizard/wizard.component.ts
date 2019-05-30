@@ -239,7 +239,6 @@ export class WizardComponent implements OnInit {
         this.commonService.castConfig.subscribe((config: Config) => {
             this.socket.emit('config', config);
         });
-
         if (this.commonService.getWatching() === true) {
             this.router.navigate(['/upload']);
         }
